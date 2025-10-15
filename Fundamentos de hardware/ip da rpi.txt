@@ -1,2 +1,4 @@
 172.17.8.35
 172.17.8.32 --> mais recente (09/10/25)
+
+WAM DMD 8KZ -> guilhermeraposogonça
