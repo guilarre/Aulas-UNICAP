@@ -116,29 +116,29 @@ void loop() {
 
     // Introdução
     tone(buzzerControlPin, E7);
-    delay(0.12);
+    delay(120);
     tone(buzzerControlPin, E7);
-    delay(0.12);
+    delay(120);
     noTone(buzzerControlPin);
-    delay(0.12);
+    delay(120);
     tone(buzzerControlPin, E7);
-    delay(0.12);
+    delay(120);
     noTone(buzzerControlPin);
-    delay(0.12);
+    delay(120);
     tone(buzzerControlPin, C7);
-    delay(0.12);
+    delay(120);
     tone(buzzerControlPin, E7);
-    delay(0.12);
+    delay(120);
     noTone(buzzerControlPin);
-    delay(0.12);
+    delay(120);
     tone(buzzerControlPin, G7);
-    delay(0.12);
+    delay(120);
     noTone(buzzerControlPin);
-    delay(0.36);
+    delay(360);
     tone(buzzerControlPin, G6);
-    delay(0.12);
+    delay(120);
     noTone(buzzerControlPin);
-    delay(0.36);
+    delay(360);
             
     // Primeira seção
     tone(buzzerControlPin, C7);
