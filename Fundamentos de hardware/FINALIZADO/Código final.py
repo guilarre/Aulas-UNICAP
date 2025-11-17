@@ -1,3 +1,5 @@
+# Alunos: Allan Lucas, Breno Araújo, Guilherme Larré, Matheus Hustenir
+
 # 5V Raspberry Pi → VCC Buzzer
 # GPIO18 → 1kΩ → Base Transistor
 # Coletor Transistor → IO Buzzer
