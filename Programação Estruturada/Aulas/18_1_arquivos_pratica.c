@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 int main() {
+    // Escrevendo no arquivo
     FILE *fp = fopen("saida.txt", "w");
 
     if (fp == NULL) {
@@ -18,10 +19,11 @@ int main() {
 
     char nome[] = "Guilherme";
     char curso[] = "Ciência da Computação";
-    fscanf(fp, "%s\n%s", nome, curso);
+    fprintf(fp, "%s\n%s", nome, curso);
 
     fclose(fp);
 
+    // Lendo o arquivo
     fp = fopen("saida.txt", "r");
 
     if (fp == NULL) {
@@ -32,8 +34,12 @@ int main() {
         return 1;
     }
 
-    fprintf(fp, "", ...);
-
+    char buf[50];
+    // O fgets recebe uma linha inteira, o fscanf recebe por palavra
+    while (fgets(buf, 50, fp) != NULL) {
+        printf("%s", buf);
+    }
+    printf("\n");
     fclose(fp);
 
     return 0;

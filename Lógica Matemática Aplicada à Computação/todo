@@ -1,0 +1,7 @@
+A ^ {[(B ^ (C xor (D ^ ¬E))) ^ F] ^ [¬G v H] ^ [(I ^ J) v (¬I ^ ¬J)]}
+
+- antes/depois (megazorde vs. simplificado)
+- separar por agrupamentos (ir explicando de pouco em pouco)
+- estatísticas: só dá true em ___% dos casos, dá false em ___% dos casos
+- cores diferentes dos parênteses pra facilitar visualização da expressão lógica
+- ...?

@@ -2,11 +2,10 @@
 - resumiu algumas proposições em uma só
 - gerou a expressão verdade baseado no objetivo final: checar se pode ou não dar match
 
-
-P ^ Q ^ (R ⊻ S) ^ ¬ T ^ U ^ ¬V ^ (¬W V W)
+A <=> [P ^ Q ^ (R ⊻ S) ^ ¬ T ^ U] ^ (¬V v W) ^ (X v ¬X)
 
 # Dúvidas:
 
-o prof quer mais de uma expressão lógica? (se match/não, se recomendação, se bloqueado por 1 semana, se destaque...)?
-se tiver premium, pode receber denuncia?
-se tiver premium, o perfil aparece como destaque para todos os perfis, ou apenas os que o user der like?
+- de acordo com o gemini, não podemos juntar as expressões de controle do match com controle da recomendação de perfis. ignoramos essa parte?
+- se tiver premium, o perfil aparece como destaque para todos os perfis, ou apenas os que o user der like? -> 
+- [P ^ Q ^ (R ⊻ S) ^ ¬ T ^ U] -> precisa separar (P); (Q ^ (R ⊻ S)), ou pode juntar pois têm o mesmo operador?
