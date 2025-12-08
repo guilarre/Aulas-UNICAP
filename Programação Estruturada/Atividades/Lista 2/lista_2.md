@@ -240,3 +240,126 @@ Ao final, exiba o vetor lido. Não use a função realloc.
 Faça um programa que receba do usuário o tamanho de uma string e chame uma função para alocar dinamicamente essa string. Em seguida, o usuário deverá informar o conteúdo dessa string. O programa deve imprimir a string sem suas vogais.
 
 ---
+
+## Structs
+
+### Questão 33
+
+Crie uma struct chamada Aluno com os campos: nome, curso e idade. Leia os dados de um aluno e imprima.
+
+---
+
+### Questão 34
+
+Crie uma struct chamada Produto com nome, preço e quantidade usando uma função cria_produto.  
+Faça uma função valor_total que receba um Produto e retorne seu valor total (preço * quantidade).
+
+---
+
+### Questão 35
+
+Escreva um programa que crie os seguintes tipos de dados usando struct:
+- Horário: composto de hora, minutos e segundos.
+- Data: composto de dia, mês e ano.
+- Compromisso: composto de uma data, um horário e um texto que descreve o compromisso.
+
+Após criar as estruturas, declare uma variável do tipo Compromisso, atribua valores aos campos de data, horário e texto, e exiba essas informações na tela.
+
+---
+
+### Questão 36
+
+Implemente um programa que leia o nome, a idade e o endereço de uma pessoa e armazene os dados em uma estrutura.  
+
+---
+
+### Questão 37
+
+Construa uma estrutura Aluno com nome, número de matrícula e curso. Leia do usuário as informações de 5 alunos, armazene em um vetor dessa estrutura e imprima os dados na tela.  
+
+---
+
+### Questão 38
+
+Crie uma estrutura representando os alunos de um determinado curso. A estrutura deve conter a matrícula do aluno, nome, nota da primeira prova, nota da segunda prova e nota da terceira prova.  
+(a) Permita ao usuário entrar com os dados de 5 alunos.  
+(b) Encontre o aluno com maior nota da primeira prova.  
+(c) Encontre o aluno com maior média geral.  
+(d) Encontre o aluno com menor média geral.  
+(e) Para cada aluno diga se ele foi aprovado ou reprovado, considerando o valor 6 para aprovação.  
+
+---
+
+### Questão 39
+
+Faça um programa que realize a leitura dos seguintes dados relativos a um conjunto de alunos: matrícula, nome, código da disciplina, nota1 e nota2. Considere uma turma de até 10 alunos. Após ler todos os dados digitados e armazená-los em um vetor de estrutura, exiba na tela a listagem final dos alunos com as respectivas médias finais (use média ponderada: nota1 com peso 1.0 e nota2 com peso 2.0).  
+
+---
+
+### Questão 40
+
+Faça um programa que armazene em um registro de dados (estrutura composta) os dados de um funcionário de uma empresa, compostos de: nome, idade, sexo (M/F), CPF, data de nascimento, código do setor onde trabalha (0–99), cargo que ocupa (string de até 30 caracteres) e salário. Os dados devem ser digitados pelo usuário, armazenados na estrutura e exibidos na tela.  
+
+---
+
+### Questão 41
+
+Faça um programa que leia um vetor com os dados de 5 carros: marca (máximo 15 letras), ano e preço. Leia um valor p e mostre as informações de todos os carros com preço menor que p. Repita este processo até que seja lido um valor p = 0. 
+
+---
+
+## Arquivos
+
+### Questão 42
+Faça um programa que grave duas linhas em um arquivo texto chamado "saida.txt". A primeira linha deve conter o seu nome e a segunda o nome do curso. Depois leia o conteúdo do arquivo e mostre no terminal
+
+### Questão 43
+Faça um programa que leia de um arquivo numeros.txt uma lista de inteiros, calcule a média e grave em um novo arquivo media.txt a média e a quantidade de valores lidos.
+
+### Questão 44
+
+Faça um programa que receba do usuário um arquivo texto e mostre na tela quantas linhas esse arquivo possui.
+
+### Questão 45
+
+Faça um programa que receba do usuário um arquivo texto e um caractere. Mostre na tela quantas vezes aquele caractere ocorre dentro do arquivo.
+
+### Questão 46
+
+Faça um programa que receba dois arquivos do usuário e crie um terceiro arquivo com o conteúdo dos dois primeiros juntos (o conteúdo do primeiro seguido do conteúdo do segundo).
+
+### Questão 47
+
+Faça um programa que leia o conteúdo de um arquivo texto e conte quantas palavras ele possui.
+Uma palavra é definida como qualquer sequência de caracteres delimitada por espaços ou quebras de linha.
+
+
+---
+
+## Matrizes
+
+### Questão 48
+Faça um programa que leia duas matrizes A e B de tamanho 3 x 3 e calcule C = A × B.
+
+### Questão 49
+Leia uma matriz de 3 x 3 elementos. Calcule e imprima a sua transposta.
+
+### Questão 50
+Leia uma matriz de 3 x 3 elementos. Calcule a soma dos elementos que estão na diagonal principal.
+
+### Questão 51
+Gere matriz 4 x 4 com valores no intervalo [1, 20]. Escreva um programa que transforme a matriz gerada numa matriz triangular inferior, ou seja, atribuindo zero a todos os elementos acima da diagonal principal. Imprima a matriz original e a matriz transformada.
+
+### Questão 52
+Leia uma matriz 3 x 3 e escreva o maior valor e o menor valor contidos nela, informando também suas respectivas posições (linha e coluna).
+
+### Questão 53
+Leia uma matriz 3 x 3 e verifique se ela é simétrica.
+
+### Questão 54
+Faça um programa que leia duas matrizes 2 x 2 com valores reais.
+Ofereça ao usuário um menu de opções:
+- somar as duas matrizes
+- subtrair a primeira matriz da segunda
+- adicionar uma constante às duas matrizes
+- imprimir as matrizes.
