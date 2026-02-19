@@ -10,7 +10,7 @@ int main() {
 
     printf("Círculo de raio %.2f, com área %.2f e perímetro %.2f\n",
     acessa_raio(c), calcula_area(c), calcula_perimetro(c));
-    
+ 
     destroi_circulo(c);
     return 0;
 }

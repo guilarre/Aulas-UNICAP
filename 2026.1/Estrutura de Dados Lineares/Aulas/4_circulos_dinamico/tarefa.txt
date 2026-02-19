@@ -1,0 +1,6 @@
+fazer o TAD (tipo abstrato de dado) para círculo:
+    - cria_circulo, destroi_circulo, acessa_raio, calcular_area, calcular_perimetro
+
+complementar:
+    - fazer pra ler 5 circulos estaticamente e guardar num vetor, ver quem ter maior_area, menor_area, maior_perimetro, menor_perimetro
+    - depois tentar fazer dinamicamente
