@@ -16,3 +16,8 @@ void maior_area(Circulo *vetor_circulos, int n);
 void menor_area(Circulo *vetor_circulos, int n);
 void maior_perimetro(Circulo *vetor_circulos, int n);
 void menor_perimetro(Circulo *vetor_circulos, int n);
+
+// Destrutor pro vetor
+void destroi_vetor(Circulo *vetor_circulos);
+
+// TODO: altera_raio()

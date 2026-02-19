@@ -17,9 +17,12 @@ int main() {
     maior_perimetro(vc);
 
     // Destruindo tudo
+    // Círculos
     for (int i = 0; i < N; i++) {
         destroi_circulo(vc[i]);
     }
+    // Vetor
+    destroi_vetor(vc);
 
     return 0;
 }

@@ -36,6 +36,8 @@ float calcula_perimetro(Circulo c) {
 // Função nova pra criar 5 círculos em vetor e retornar vetor
 Circulo *criar_vetor_circulos(int n) {
     // Vetor estático pra guardar os círculos
+    // Com malloc, guardamos na HEAP. Com o v[], guardamos
+    // na STACK
     Circulo *vetor_circulos = malloc(n * sizeof(Circulo));
     for (int i = 0; i < n; i++) {
         float r;
@@ -90,3 +92,10 @@ void menor_perimetro(Circulo *vetor_circulos, int n) {
     }
     printf("O círculo de menor perímetro é o círculo #%d, com perímetro %.2f\n", i, calcula_perimetro(c_menor_perimetro));
 }
+
+// Destrutor pro vetor
+void destroi_vetor(Circulo *vetor_circulos) {
+    free(vetor_circulos);
+}
+
+// TODO: altera_raio()

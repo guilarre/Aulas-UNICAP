@@ -1,5 +1,5 @@
 #define N 5 // Número de círculos no vetor estático
-#define pi 3.14
+#define PI 3.14
 
 typedef struct Circulo_st* Circulo;
 
@@ -19,4 +19,4 @@ void maior_perimetro(Circulo *vetor_circulos);
 void menor_perimetro(Circulo *vetor_circulos);
 
 // Destrutor do vetor
-// void destruir_vetor_circulos(Circulo *vetor_circulos);
+void destroi_vetor(Circulo *vetor_circulos);
