@@ -3,10 +3,10 @@
 
 int main(){
     float lado;
-    
+ 
     printf("Insira o lado do quadrado: ");
     scanf("%f", &lado);
-    
+ 
     Quadrado q = cria_quadrado(lado);
 
     printf("Quadrado de lado %.2f, com area %.2f e perimetro %.2f\n",
