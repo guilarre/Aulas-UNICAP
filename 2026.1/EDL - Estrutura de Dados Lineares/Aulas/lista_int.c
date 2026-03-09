@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include <stdlib.h>
 #define MAX 5
 
 // TODO: inserir, acessar e remover vão atuar APENAS no final da lista (inserir_final, acessar_final, ...)
