@@ -14,16 +14,13 @@
 // se início e final == 0, lista vazia
 // se início e final != 0 e início == final, lista cheia
 
-#define MAX 5
-#include <stdio.h>
-#include <stdlib.h>
+#include "fila_int.h"
 
 struct fila {
     int dados[MAX];
     int inicio, final, qtd;
 };
 
-typedef struct fila *Fila;
 
 Fila cria_fila() {
     Fila f = malloc(sizeof(struct fila));
@@ -38,8 +35,6 @@ Fila cria_fila() {
 int inserir_fila(Fila f, int valor) {
     if (f->qtd < MAX && f != NULL) {
         f->dados[f->final] = valor;
-        // f->final++;
-        // lidando com caso chegue no max
         f->final = (f->final + 1) % MAX;
         f->qtd++;
         return 0;
@@ -50,12 +45,7 @@ int inserir_fila(Fila f, int valor) {
 int remover_fila(Fila f) {
     if (f->qtd == 0 || f == NULL)
         return 1;
-    // if (f->inicio == MAX) {
-    //     f->inicio = 0;
-    // }
-    // if (f->qtd < MAX && f->inicio < MAX) {
     else {
-        // f->inicio++;
         f->inicio = (f->inicio + 1) % MAX;
         f->qtd--;
         return 0;
@@ -63,6 +53,7 @@ int remover_fila(Fila f) {
     return 1;
 }
 
+// Acessa só o início p visualização
 int acessar(Fila f, int* valor) {
     if (f->qtd == 0 || f == NULL)
         return 1;
@@ -85,25 +76,4 @@ void destruir_fila(Fila f) {
     if (f != NULL) {
         free(f);
     }
-}
-
-int main() {
-    Fila f = cria_fila();
-
-    inserir_fila(f, 10);
-    inserir_fila(f, 20);
-    inserir_fila(f, 30);
-    remover_fila(f);
-    inserir_fila(f, 50);
-    remover_fila(f);
-
-    int valor; // pra receber o valor consultado
-
-    if (!acessar(f, &valor))
-        printf("Começo da fila: %d", valor);
-    else
-        printf("Erro ao acessar fila");
-
-    destruir_fila(f);
-    return 0;
 }
