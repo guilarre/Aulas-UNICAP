@@ -9,7 +9,7 @@ xi = None
 i = 0
 
 while True:
-    i += 1
+    i += 1 #FIX: tem q ser no final??
     xi = round(f(x), 4)
     # Condição de parada:
     if round(math.fabs(xi - x), 4) <= 1e-3:
