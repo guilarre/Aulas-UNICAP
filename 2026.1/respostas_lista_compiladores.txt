@@ -1,0 +1,31 @@
+A = {"legal", "ruim"} e B = {"garoto", "garota"}
+
+1. Faça AUB = {}
+
+Matematicamente (teoria dos conjuntos):
+    AUB = {"legal", "ruim", "garoto", "garota"}
+
+Em relação a expressões regulares, um autômato verifica a presença de APENAS UM dos elementos de A OU de um dos de B dentro do conjunto acima, para dar match.
+
+    se entrada = "legal" OK
+    se entrada = "garota" OK
+    se entrada = "ruim garoto" NÃO OK, deve ser exatamente igual a um dos elem. de AUB
+
+Em regex: legal|ruim|garoto|garota.
+
+
+2. Faça AB = {}
+
+AB = {"legalgaroto", "legalgarota", "ruimgaroto", "ruimgarota"}
+
+Em regex: (legal|ruim)(garoto|garota)
+
+
+3. Faça A* = {}
+
+Em regex = (legal|ruim)*
+
+Matematicamente:
+A* = {A0 U A1 U A2 U A3 U ...} (ad infinitum)
+
+A* = {ε, "legal", "ruim", "legallegal", "legalruim", "ruimlegal", "ruimruim", "legallegallegal", "legallegalruim", "legalruimlegal", "legalruimruim", "ruimlegallegal", "ruimlegalruim", "ruimruimlegal", "ruimruimruim", ...}
