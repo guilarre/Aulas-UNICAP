@@ -4,6 +4,7 @@
 // remover_inicio
 // acessar_inicio
 // destruir
+// aula 2: inserir_final, remover_final
 
 #include <stdlib.h>
 #include <stdio.h>
