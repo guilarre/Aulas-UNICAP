@@ -1,0 +1,73 @@
+1. Coesão e acoplamento
+    1.1. Definições
+    Coesão: diz o quão relacionados os elementos de um mesmo módulo são entre si. Se há baixa coesão, os elementos do módulo devem ser quebrados em outros módulos.
+    Acoplamento: diz da relação entre módulos diferentes e mede o quão dependentes uns dos outros os módulos são. Se há alto acoplamento, significa que os módulos dependem muito uns dos outros, e talvez deveriam estar juntos em um mesmo módulo, para evitar comunicações desnecessárias.
+
+    1.2. Por que o objetivo de um bom projeto é sempre "alta coesão e baixo acoplamento"?
+    O objetivo de um bom projeto é alta coesão e baixo acoplamento, pois, para se ter uma modularização adequada e evitar-se retrabalho, os módulos devem ter responsabilidades diferentes, não depender uns dos outros (baixo acoplamento) e agrupar responsabilidades relacionadas em um só módulo (alta coesão).
+
+2. Métricas de complexidade
+    A métrica da Complexidade Ciclomática de McCabe representa o fluxo do sistema como um grafo, mostrando o número de caminhos independentes no fluxo de controle. A partir do número de nós, arestas e conexões do grafo, calculamos M = E - N + 2P (E = número de arestas, N = nº de nós e P = nº de componentes conectados). Um baixo M representa uma complexidade baixa, o que facilita a testagem. Quanto maior o M, maior a dificuldade de se testar o sistema.
+
+3. Acoplamento eferente e aferente
+    O acoplamento aferente (CA) refere-se a quantos outros componentes dependem do módulo em questão (usam o módulo como entrada, dependência de fora pra dentro) enquanto o acoplamento eferente (CE) refere-se a quanto o módulo em questão depende de outros componentes (dependência de dentro pra fora). A métrica de instabilidade (I = CE/(CE+CA)) varia de 0 (estável) a 1 (instável), sendo ideal que haja um baixo CE e um alto CA para que uma maior estabilidade seja alcançada. Ou seja, o melhor para estabilidade é que um módulo dependa menos de outros componentes externos e que os componentes externos dependam mais dele.
+
+4. SOLID - SRP
+    Se um sistema que viola o princípio SRP precisa ser alterado, significa que os seus módulos possuem mais de uma responsabilidade e a manutenção de um dos módulos acarreta na quebra de outras funcionalidades. Por exemplo, se um módulo que cuida do empréstimo de obras em um museu e também do ponto dos funcionários entrar em manutenção por qualquer motivo, as duas funcionalidades serão interrompidas. Outra desvantagem é que existem diversos motivos para o módulo entrar em manutenção.
+
+5. SOLID - LSP
+    O LSP diz que "um objeto deve poder ser substituído por um subobjeto sem quebrar o programa". No caso do retângulo e do quadrado, sabemos que, matematicamente, quadrados são tipos de retângulos com lados iguais, porém não é possível substituir um retângulo por um quadrado sem quebrarmos o comportamento esperado para um retângulo em um programa.
+
+6. SOLID - DIP
+    Significa que os detalhes de um sistema devem ser implementados pelas classes herdeiras, não pela classe abstrata (que deve ser mais generalista). As abstrações (alto nível) não devem depender das classes que as herdam (baixo nível).
+
+7. O dilema da interface "gorda" vs. LSP e ISP
+    A) O ISP (segregação de interfaces) é violado nesses casos. Ele diz que as interfaces devem seguir o SRP e tratar apenas de responsabilidades únicas. É melhor ter várias interfaces que tratam uma de um assunto específico do que ter uma única que trata de todos assuntos.
+    B) O LSP (substituição liskov) seria o princípio ferido, pois ele diz que o comportamento esperado do sistema não deve ser quebrado ao substituir-se um subobjeto por um objeto.
+
+8. DIP e a estabilidade das abstrações
+    A) Segundo o DIP, a classe de alto nível (que vai ser generalista em relação ao sistema como um todo) não deve instanciar diretamente a de baixo nível (que trata de coisas mais específicas, e.g. detalhes de API do PayPal). A dependência não pode ser de cima para baixo, mas sim de baixo para cima.
+    B) Em vez de termos "ProcessadorDePagamento -> PayPalService" (ProcessadorDePagamento depende de PayPalService), teríamos: "ProcessadorDePagamento -> ServiçoPagamento <- PayPalService", onde a dependência foi invertida e ambos dependem de abstrações, não de detalhes da implementação de cada um.
+
+9. GRASP - Especialista
+    Porque quem tem os detalhes de como calcular o total em uma lista de itens é a classes Pedido, já a Calculadora tem um tipo diferente de total, que não está relacionado a itens de uma lista.
+
+10. GRASP - Criador
+    B deve criar A se um ou mais das condições abaixo forem verdade:
+    - B contém ou agrega instâncias de A;
+    - B registra instâncias de A;
+    - B usa em suas operações instâncias de A;
+    - B tem os dados de inicialização necessários para criar A;
+
+11. GRASP - Controlador
+    Ela irá controlar (mediar) a comunicação entre muitas classes diferentes do sistema, o que é perigoso, pois caso haja alguma modificação, a classe controladora (que funciona como intermediária para comunicações) terá que ser modificada, podendo quebrar comunicações entre outras classes, dificultando manutenção e testes.
+
+12. UML - Classes vs. Objetos
+    O diagrama de classes representa o sistema estaticamente como um todo, mostrando um modelo mais geral (classes, atributos, métodos e relacionamentos), enquanto o diagrama de objetos representa uma instância desse modelo em um momento específico (objetos concretos e seus valores). Ou seja, classes são os tipos e os objetos são as instâncias do tipo.
+
+13. UML - Associações
+    Composição é quando existe uma relação parte-todo forte, onde uma parte do sistema não existe sem a outra, e agregação é quando essa relação é fraca, i.e., uma parte do sistema existe independentemente de outra (uma pode ser destruída sem quebrar a outra).
+
+14. UML - Multiplicidade
+    Podemos representar que uma Exposição pode ter de 1 a n Obras como "Exposição 1..* Obras", e uma Obra em no máximo uma Exposição por vez como "Obra 0..1 Exposição" (de 0 a no máximo 1).
+
+15. UML - Sequência
+    As linhas de vida representam objetos/módulos ao longo do tempo, mostrando quando estão ativos ou trocando mensagens. Os fragmentos combinados, e.g. alt, loop, mostram respectivamente fluxos condicionais alternativos e estruturas de repetição em um diagrama, sendo, por exemplo, o alt para uma estrutura "if-else" e o loop para um "while" ou "for".
+
+16. UML - Colaboração/Comunicação
+    O diagrama de comunicação (representa comunicações estaticamente, mais simples) é preferível ao de sequência (representa comunicações temporalmente, mais completo) quando não houver necessidade de representar as comunicações de forma cronológica, e.g. apresentando o sistema a um stakeholder que não precisa saber de detalhes técnicos.
+
+17. UML - Visibilidade
+    + = público (todos têm acesso direto ao atributo)
+    - = privado (somente os que estiverem dentro da própria classe do atributo têm acesso a ele)
+    # = protegido (subclasses, pacotes e a própria classe têm acesso direto)
+    + = pacote/padrão (apenas a própria classe e os pacotes que a contêm têm acesso)
+
+18. Métricas de tamanho
+    A métrica de pontos de função foca na quantidade de funcionalidades diferentes implementadas, enquanto a LOC mede a quantidade total de linhas de código. A PF foca mais na entrega de funcionalidades ao usuário, enquanto a LOC foca no desenvolvimento em si.
+
+19. GRASP - Alta Coesão
+    A delegação excessiva aumenta a quantidade de vezes que um módulo tem que se comunicar com outro (aumentando o acoplamento), pois quebra uma mesma responsabilidade entre várias classes diferentes. Quando for necessário testar/modificar, teremos que mexer com diversas classes.
+
+20. UML - Interfaces
+    O nome de uma interface deve estar entre os símbolos "<< >>". A implementação da interface é representada por uma linha tracejada "---" com uma seta vazia, enquanto a herança é representada por uma linha contínua com uma seta vazia.

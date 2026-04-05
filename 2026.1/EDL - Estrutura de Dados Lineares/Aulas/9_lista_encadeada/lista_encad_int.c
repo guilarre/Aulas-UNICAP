@@ -21,7 +21,7 @@ typedef struct lista {
 } *Lista;
 
 Lista criar_lista() {
-    Lista li = malloc(sizeof(Lista));
+    Lista li = malloc(sizeof(Lista)); // FIX: seria sizeof(struct lista) pq mudou pra Lista ser ponteiro
     if (li != NULL) {
         li->inicio = NULL;
         li->qtd = 0;
