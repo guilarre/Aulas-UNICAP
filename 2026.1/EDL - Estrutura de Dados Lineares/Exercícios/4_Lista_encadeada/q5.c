@@ -39,7 +39,7 @@ int insere_inicio(Lista li, int valor) {
     }
 }
 
-int insere_fim(Lista li, int valor) {
+int insere_final(Lista li, int valor) {
     if (li == NULL) return 1;
     Elem no = malloc(sizeof(struct elemento));
     no->valor = valor;
@@ -62,7 +62,103 @@ int insere_fim(Lista li, int valor) {
 }
 
 int remove_inicio(Lista li) {
-    // TODO:
+    if (li == NULL || li->qtd <= 0) return 1;
+    else {
+        Elem aux = li->inicio;
+        li->inicio = aux->prox;
+        free(aux);
+        li->qtd--; return 0;
+    }
+}
+
+int remove_final(Lista li) {
+    if (li == NULL || li->qtd <= 0) return 1;
+    else {
+        Elem aux = li->inicio;
+        // se só tiver 1 elem na lista
+        if (aux->prox == NULL) {
+            li->inicio = NULL; //precisa?
+            free(aux);
+            li->qtd--;
+            return 0;
+        } else { //mais de 1 elem na lista
+            Elem anterior; //antes do último
+            while (aux->prox != NULL) {
+                anterior = aux;
+                aux = aux->prox;
+            }
+            anterior->prox = NULL; //precisa?
+            free(aux);
+            li->qtd--;
+            return 0;
+        }
+    }
+}
+
+void libera_lista(Lista li) {
+    if (li == NULL) return;
+    Elem aux = li->inicio;
+    Elem prox;
+    while (aux != NULL) {
+        prox = aux->prox;
+        free(aux);
+        aux = prox;
+    }
+    free(li);
+}
+
+int lista_vazia(Lista li) { //1 = sim, 0 = não
+    if (li == NULL || li->qtd <= 0) return 1;
+    else return 0;
+}
+
+int tamanho_lista(Lista li) {
+    if (li == NULL || li->qtd <= 0) return 0;
+    else return li->qtd;
+}
+
+void imprime_lista(Lista li) {
+    if (li == NULL || li->qtd <= 0) return;
+    else {
+        Elem aux = li->inicio;
+        while (aux->prox != NULL) {
+            printf("%d ", aux->valor);
+            aux = aux->prox;
+        }
+        print("\n");
+    }
+}
+
+void imprime_lista_reverso(Lista li) {
+    if (li == NULL || li->qtd <= 0) return;
+    else {
+        Elem aux = li->inicio;
+        Elem arraypos[li->qtd]; //ponteiro de ponteiros
+        int i = 0;
+        while (aux->prox != NULL) {
+            arraypos[i] = aux;
+            i++;
+            aux = aux->prox;
+        }
+        for (int j = 0; j < li->qtd; j++) {
+            printf("%d ", arraypos[i]->valor);
+            i--;
+        }
+        printf("\n");
+    }
+}
+
+Elem busca_valor(Lista li, int valor) {
+    if (li == NULL || li->qtd <= 0) return NULL
+    else {
+        Elem aux = li->inicio;
+        while (aux->prox != NULL) {
+            if (aux->valor == valor) {
+                return aux;
+            } // TODO:
+            aux = aux->prox;
+        }
+    }
 }
 
 int main() {
