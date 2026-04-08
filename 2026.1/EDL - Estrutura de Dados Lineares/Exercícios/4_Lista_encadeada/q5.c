@@ -67,7 +67,8 @@ int remove_inicio(Lista li) {
         Elem aux = li->inicio;
         li->inicio = aux->prox;
         free(aux);
-        li->qtd--; return 0;
+        li->qtd--;
+        return 0;
     }
 }
 
@@ -121,11 +122,11 @@ void imprime_lista(Lista li) {
     if (li == NULL || li->qtd <= 0) return;
     else {
         Elem aux = li->inicio;
-        while (aux->prox != NULL) {
+        while (aux != NULL) {
             printf("%d ", aux->valor);
             aux = aux->prox;
         }
-        print("\n");
+        printf("\n");
     }
 }
 
@@ -134,33 +135,76 @@ void imprime_lista_reverso(Lista li) {
     else {
         Elem aux = li->inicio;
         Elem arraypos[li->qtd]; //ponteiro de ponteiros
-        int i = 0;
-        while (aux->prox != NULL) {
-            arraypos[i] = aux;
-            i++;
+        int topo = 0;
+        while (aux != NULL) {
+            arraypos[topo++] = aux;
             aux = aux->prox;
         }
-        for (int j = 0; j < li->qtd; j++) {
-            printf("%d ", arraypos[i]->valor);
-            i--;
+        int j = topo;
+        for (int i = 0; i < j; i++) {
+            printf("%d ", arraypos[topo-1]->valor);
+            topo--;
         }
         printf("\n");
     }
 }
 
 Elem busca_valor(Lista li, int valor) {
-    if (li == NULL || li->qtd <= 0) return NULL
+    if (li == NULL || li->qtd <= 0) return NULL;
     else {
         Elem aux = li->inicio;
-        while (aux->prox != NULL) {
+        while (aux != NULL) {
             if (aux->valor == valor) {
                 return aux;
             } // TODO:
             aux = aux->prox;
         }
+        printf("Valor não encontrado\n");
+        return NULL;
+    }
+}
+
+Elem consulta_lista_posicao(Lista li, int pos) {
+    if (li == NULL || li->qtd <= 0) return NULL;
+    else {
+        Elem aux = li->inicio;
+        int i = 0;
+        while (aux != NULL) {
+            if (i == pos) return aux;
+            aux = aux->prox;
+            i++;
+        }
+        printf("Índice não encontrado\n");
+        return NULL;
     }
 }
 
 int main() {
+    Lista li = cria_lista();
+    insere_final(li, 1);
+    insere_final(li, 2);
+    insere_final(li, 3);
+    insere_final(li, 4);
+
+    insere_inicio(li, 5);
+    insere_inicio(li, 6);
+
+    imprime_lista(li);
+    imprime_lista_reverso(li);
+
+    remove_final(li);
+    remove_inicio(li);
+
+    imprime_lista(li);
+    Elem elem = busca_valor(li, 3);
+    if (elem != NULL) printf("%d\n", elem->valor);
+
+    elem = consulta_lista_posicao(li, 4);
+    if (elem != NULL) printf("%d\n", elem->valor);
+
+    printf("tamanho da lista = %d\n", tamanho_lista(li));
+
+    libera_lista(li);
+    if (elem != NULL) free(elem);
     return 0;
 }
