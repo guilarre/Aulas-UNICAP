@@ -43,7 +43,7 @@ int inserir_fim(Lista li, int valor) {
     } else if (li->qtd > 0) {
         Elem aux = li->inicio;
         while (aux->prox != NULL) {
-aux = aux->prox;
+            aux = aux->prox;
         }
         aux->prox = no;
         li->qtd++;
@@ -65,8 +65,8 @@ int remover_fim(Lista li) {
     if (li == NULL || li->qtd == 0) return 1;
     Elem aux = li->inicio;
     if (aux->prox == NULL) {
-        free(aux);
         li->inicio = NULL;
+        free(aux);
         li->qtd--;
         return 0;
     }
@@ -75,8 +75,8 @@ int remover_fim(Lista li) {
         ant = aux;
         aux = aux->prox;
     }
-    free(aux);
     ant->prox = NULL;
+    free(aux);
     li->qtd--;
     return 0;
 }
@@ -94,7 +94,7 @@ void destruir_lista(Lista li) {
 }
 
 void printar_lista(Lista li) {
-    if (li == NULL || li->qtd == 0) return;
+    if (li == NULL || li->qtd == 0) printf("[ ]\n");
     Elem aux = li->inicio;
     while (aux != NULL) {
         printf("%d ", aux->valor);
@@ -103,36 +103,26 @@ void printar_lista(Lista li) {
     printf("\n");
 }
 
-void soma_2_pos(Lista li, int pos1, int pos2) {
-    if (li == NULL || li->qtd == 0) {
-        printf("ERRO! Lista vazia\n");
-        return;
-    }
-    if (li->qtd <= pos1 || li->qtd <= pos2) {
-        printf("ERRO! Posições dadas devem existir na lista\n");
-        return;
-    }
+void conta_neg(Lista li) {
+    if (li == NULL || li->qtd == 0) printf("[ ]\n");
     Elem aux = li->inicio;
-    int soma = 0;
-    int i = 0;
+    int count = 0;
     while (aux != NULL) {
-        if (i == pos1) soma += aux->valor;
-        if (i == pos2) soma += aux->valor;
+        if (aux->valor < 0) count++;
         aux = aux->prox;
-        i++;
     }
-    printf("Soma = %d\n", soma);
+    printf("Qtd de elementos negativos = %d\n", count);
 }
 
 int main() {
     Lista li = criar_lista();
     inserir_fim(li, 1);
-    inserir_fim(li, 2);
-    inserir_fim(li, 3);
-    inserir_fim(li, 4);
+    inserir_fim(li, -2);
+    inserir_fim(li, -3);
+    inserir_fim(li, -4);
 
     printar_lista(li);
-    soma_2_pos(li, 3, 0);
+    conta_neg(li);
 
     destruir_lista(li);
     return 0;
