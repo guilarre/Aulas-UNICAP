@@ -31,7 +31,7 @@
 - ele traz como o método foi construído passo a passo, a partir das fórmulas 7 e 8, obtendo as fórmulas em 9 (fórmula base, estabelecendo o parâmetro n) e 18 (equação final usando η = 1/3, parâmetro identificado como o valor de n que anula os termos de erro de ordem inferior)
 
 4. Local convergence analysis: first approach
-5. Local convergence analysis: first approach
+5. Local convergence analysis: second approach
 6. Semilocal convergence
 - o autor dedica 3 capítulos, para demonstrar a convergência local (quando conhecemos a raiz e queremos analisar o raio de convergencia usando expansao de taylor) e semilocal (quando temos uma estimativa inicial e queremos definir as condições de convergência)
 
