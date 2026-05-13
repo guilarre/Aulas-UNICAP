@@ -34,12 +34,15 @@ int push(Pilha p, int valor) {
     return 0;
 }
 
-int pop(Pilha p) { // TODO: free em cada elemento após pop
+int pop(Pilha p) {
     if (p == NULL || p->qtd == 0) return 1;
     if (p->topo->prox == NULL) { // caso só tenha 1 elem
+        free(p->topo);
         p->topo = NULL;
     } else { // caso mais de 1
+        Elem aux = p->topo;
         p->topo = p->topo->prox;
+        free(aux);
     }
     p->qtd--;
     return 0;
@@ -59,9 +62,7 @@ int size(Pilha p) {
 void destroy(Pilha p) {
     if (p == NULL) return;
     Elem aux;
-    while (p->topo != NULL) { // TODO: ajeitar o free em cada elemento (só vai precisar do pop qnd ajeitar)
-        aux = p->topo;
-        free(aux);
+    while (p->topo != NULL) {
         pop(p);
     }
     free(p);
@@ -74,15 +75,37 @@ int menor_valor(Pilha p, int *menor_valor) {
     Elem aux = p->topo;
     int menor = aux->valor;
     while (aux != NULL) {
-        aux = aux->prox;
         if (aux->valor < menor) menor = aux->valor;
+        aux = aux->prox;
     }
     *menor_valor = menor;
     return 0;
 }
 
+// TODO: implementação de menor_valor usando somente as funções
+// (sem acessar diretamente a pilha)
+
 int main() {
-    // TODO: testes
+    Pilha p = criar_pilha();
+    push(p, 1);
+    push(p, 2);
+    push(p, 3);
+
+    int valor;
+    if (!menor_valor(p, &valor)) printf("O menor valor é: %d\n", valor);
+
+    peek(p, &valor);
+    printf("%d\n", valor);
+    pop(p);
+    peek(p, &valor);
+    printf("%d\n", valor);
+    pop(p);
+    peek(p, &valor);
+    printf("%d\n", valor);
+    pop(p);
+    if (pop(p)) printf("can't pop any longer lol\n");
+
+    destroy(p);
 
     return 0;
 }

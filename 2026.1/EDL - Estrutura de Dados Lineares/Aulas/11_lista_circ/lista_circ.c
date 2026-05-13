@@ -84,3 +84,16 @@ int remover_final(Lista li) {
     li->qtd--;
     return 0;
 }
+
+// TODO: 
+int acessar_inicio(Lista li, int* valor){
+}
+
+int acessar_final(Lista li, int* valor){
+}
+
+void destruir(Lista li){
+}
+
+int tamanho_lista(Lista li){
+}
