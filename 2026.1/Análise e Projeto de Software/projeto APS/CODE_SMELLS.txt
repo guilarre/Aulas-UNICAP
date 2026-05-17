@@ -1,0 +1,20 @@
+if-else e switch-case gigantes:
+    Cliente.java - selecionarCliente() e modificarCliente() trabalham em cima de um switch-case enorme
+    Main() é um switch-case gigantesco
+
+god class/couplers: Main() faz um pouco de tudo: carrega diretamente os json, chamando todos os JsonReader, e escreve tb no fim, chamando individualmente todos os JsonWriter. Além disso, a Main orquestra absolutamente todas as funcionalidades de cada opção do menu
+
+não tem uma arquitetura ideal definida. era bom ter um MVC ou algo do tipo
+
+CRUD dentro da classe q tb tem a lógica de negócio
+
+Não tem interfaces: a única que tem é Validavel e ela é inútil (criamos só pra atender um requisito do prof, mas não tem nada implementado)
+
+nome das classes podem melhorar, e.g., Historico -> HistoricoCompras
+
+---
+
+OUTROS:
+- crud acontece dentro das classes, depois que tudo é transferido pro .json. pode ser ok agora, mas se crescesse mais, era melhor ter um BD e gerenciar dados nele
+- input do user é recebido pelo scanner (pode ser problemático?)
+- uso do gson pra gerar os json é bastante complicado. ideal seria tentar encontrar uma maneira mais simples (acho que não tem), ou usar BD (usando spring?)
