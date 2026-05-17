@@ -40,4 +40,20 @@ int enqueue(Fila f, int valor) {
     return 0;
 }
 
+int dequeue(Fila f) {
+    if (f == NULL || f->qtd == 0) return 1;
+    if (f->qtd == 1) { // ou pode fazer f->inicio == f->final
+        free(f->inicio);
+        f->inicio = NULL;
+        f->final = NULL;
+    } else {
+        f->inicio = f->inicio->prox;
+        free(f->inicio);
+    }
+    f->qtd--;
+    return 0;
+}
 
+int is_empty(Fila f) {
+    
+}
