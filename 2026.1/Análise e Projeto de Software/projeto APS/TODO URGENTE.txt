@@ -1,0 +1,21 @@
+TO DO
+
+PRIORIDADE MÁXIMA:
+- migrar projeto pra ser usado no vscode/codespaces e checar se quebrou algo (gui)
+- estudar os GOF, SOLID, GRASP
+- estudar sistema, as classes e suas funcionalidades, interações, etc. (cada um tenta fazer um resumo seu enquanto estuda o código)
+
+NOVA FUNCIONALIDADE (desenvolver usando TDD):
+- implementação de um BD em vez de jsons (usar ids como as PK e FK)
+
+PRA MELHORAR:
+- melhorar a Main()
+- CRUD dentro das classes
+- implementar a interface Validavel
+- lidar com if-else/switch-case usando strategy
+- microsserviços // API + BD
+- MVC???
+- usar os enums nas opções de entrada do user
+
+CHECAR SE PRECISA:
+- gson // uso do scanner -> checar como melhorar

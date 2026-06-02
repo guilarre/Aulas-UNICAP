@@ -1,3 +1,14 @@
+- identificação dos code smells e sugestões de técnicas de - refatoração (GoF)
+- descrição da organização do sistema (MVC)
+- métricas de software (acoplamento, coesão e complexidade ciclomática usando ferram. de análise estática)
+- scripts de testes de unidade
+- cobertura de código
+- evidência de TDD
+
+- GERAR O .JAR PRA RODAR NA HORA SE FOR PRECISO
+
+---------------------------------------
+
 PROJETO APS
 
 ANTES DA APLICAÇÃO:
@@ -14,7 +25,7 @@ Entregas:
 - 1 diagrama de classes
 - 2 diagramas de sequência ou comunicação
 - Descrição da arquitetura: MVC, camadas ou microsserviços
-- métricas de softare: apresentação dos dados sobre acoplamento, coesão e complexidade ciclomática (usando ferram. de análise estática)
+- métricas de software: apresentação dos dados sobre acoplamento, coesão e complexidade ciclomática (usando ferram. de análise estática)
 - scripts de testes de unidade e indicação de cobertura de código (% do cód. fonte executado durante testes automáticos)
 
 TO DO:
@@ -22,11 +33,14 @@ TO DO:
 - mudar o nome do projeto (LaSca no menu)
 - ver se precisa mesmo da interface Validavel, e se sim, realmente utilizar ela
 - colocar alguns exemplos de json pra teste
+- refatorar usando observers pra gerenciar atualizações de cada classe
+- refatorar usando microsserviços + bd??
+- verificar que classes violam o que
 
 evoluções possíveis, após aplicar os padrões:
 - verificar backlog do projeto original e postits de evolução no diagrama
 - reorganizar melhor os nomes das classes (atualmente acho que compras/vendas/cliente/funcionário tão misturados)
-- validações faltantes (aniversário não pode ser data acima da atual)
+- validações faltantes (aniversário não poder ser uma data acima da atual)
 - melhorar validação do email: atualmente só verifica presença do @, não do .com, .com.br, etc. 
 - recusar cpfs iguais para diferentes funcionários/clientes
 - enum pra alguns dados do cadastro, como gênero, pref de com., etc.
