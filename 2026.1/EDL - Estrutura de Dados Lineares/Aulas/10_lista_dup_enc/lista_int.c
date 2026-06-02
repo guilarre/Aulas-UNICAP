@@ -1,6 +1,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 
+// TODO: ajeitar essa implementação
 typedef struct elemento{
     int valor;
     struct elemento* prox;
@@ -23,6 +24,7 @@ Lista criar_lista(){
     return li;
 }
 
+// TODO: falta verificar li
 int inserir_inicio(Lista li, int valor){
     Elem* no = malloc(sizeof(Elem));
     if(no != NULL){

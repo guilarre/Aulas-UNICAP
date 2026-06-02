@@ -7,8 +7,8 @@ typedef struct elemento {
 } *Elem;
 
 typedef struct lista {
-    int qtd;
-    Elem final;
+    int qtd; //qtd não é um limite (a lista é dinâmica)
+    Elem final; //o primeiro é acessado chamando l->final->prox
 } *Lista;
 
 Lista criar_lista() {
@@ -54,9 +54,8 @@ int inserir_final(Lista li, int valor) {
 }
 
 int remover_inicio(Lista li) {
-    if (li == NULL) return 1;
-    if (li->final == NULL || li->qtd == 0) return 1;
-    Elem aux = li->final->prox; // elem a apagar
+    if (li == NULL || li->final == NULL || li->qtd == 0) return 1;
+    Elem aux = li->final->prox; // elem pro free
     if (aux == li->final) {
         li->final = NULL;
     } else {
@@ -86,14 +85,33 @@ int remover_final(Lista li) {
 }
 
 // TODO: 
-int acessar_inicio(Lista li, int* valor){
+int acessar_inicio(Lista li, int *valor) {
+    if (li == NULL || li->final == NULL || li->qtd == 0) return 1;
+    Elem no = li->final->prox; //1º nó
+    *valor = no->valor;
+    return 0;
 }
 
-int acessar_final(Lista li, int* valor){
+int acessar_final(Lista li, int *valor) {
+    if (li == NULL || li->final == NULL || li->qtd == 0) return 1;
+    Elem no = li->final;
+    *valor = no->valor;
+    return 0;
 }
 
-void destruir(Lista li){
+void destruir(Lista li) {
+    if (li != NULL && li->final != NULL && li->qtd != 0) {
+        Elem aux = li->final->prox;
+        Elem prox;
+        while (aux != NULL) {
+            prox = aux->prox;
+            free(aux);
+            aux = prox;
+        }
+    }
 }
 
-int tamanho_lista(Lista li){
+int tamanho_lista(Lista li) {
+    if (li == NULL || li->final == NULL || li->qtd == 0) return 0;
+    return li->qtd;
 }

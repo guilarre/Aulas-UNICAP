@@ -18,7 +18,6 @@ Entregas:
 - scripts de testes de unidade e indicação de cobertura de código (% do cód. fonte executado durante testes automáticos)
 
 TO DO:
-- migrar de projeto do eclipse pro intellij
 - mudar o nome do projeto (LaSca no menu)
 - ver se precisa mesmo da interface Validavel, e se sim, realmente utilizar ela
 - colocar alguns exemplos de json pra teste
