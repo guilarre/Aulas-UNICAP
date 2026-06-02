@@ -21,7 +21,7 @@ typedef struct lista {
 } *Lista;
 
 Lista criar_lista() {
-    Lista li = malloc(sizeof(Lista)); // FIX: seria sizeof(struct lista) pq mudou pra Lista ser ponteiro
+    Lista li = malloc(sizeof(struct lista));
     if (li != NULL) {
         li->inicio = NULL;
         li->qtd = 0;
@@ -87,7 +87,7 @@ int tamanho_lista(Lista li) {
 int inserir_final(Lista li, int valor) {
     if (li != NULL) {
         // Cria o nó
-        Elem no = malloc(sizeof(Elem));
+        Elem no = malloc(sizeof(struct elemento));
         if (no == NULL)
             return 1;
         no->valor = valor;

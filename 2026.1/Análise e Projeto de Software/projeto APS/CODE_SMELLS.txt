@@ -1,3 +1,13 @@
+long methods
+
+duplicate code (principalmente nos crud, que só mudam pouca coisa de um pro outro, e a string que é chamada no menu) -> principalmente no CREATE (poderíamos implementar um factory aqui) para cada classe?
+
+operações crud e lista de objetos importados dos .json tão dentro das classes Cliente, Funcionario, Produto...
+
+acoplamento entre compra e produto, e compraproduto (classe dentro de outra classe) -> compra tem coesão baixa
+
+getters que chamam menu, como no getCompraProduto() em Compra
+
 if-else e switch-case gigantes:
     Cliente.java - selecionarCliente() e modificarCliente() trabalham em cima de um switch-case enorme
     Main() é um switch-case gigantesco
