@@ -58,13 +58,12 @@ def gauss_com_pivoteamento_parcial(A, b, tol=1e-12, mostrar_passos=True):
 
 # definindo as matrizes do problema
 A = np.array([
-    [0.5, 6, 2, 1],
-    [7, 2, 1, 1],
-    [2, 1, 8, 2],
-    [1, 2, 1, 9]
+    [0, 2, 5],
+    [1, -3, 1],
+    [2.1, 1, 1]
 ])
 
-b = np.array([41.5, 40, 62, 70])
+b = np.array([9, 5, 3])
 
 # chamando a função:
 x_pivo, U_pivo, c_pivo = gauss_com_pivoteamento_parcial(A, b, mostrar_passos=True)
