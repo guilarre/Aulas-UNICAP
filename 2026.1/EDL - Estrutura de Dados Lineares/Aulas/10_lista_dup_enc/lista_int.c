@@ -1,18 +1,17 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-// TODO: ajeitar essa implementação
-typedef struct elemento{
+typedef struct elemento {
     int valor;
-    struct elemento* prox;
-    struct elemento* ant;
-} Elem;
+    struct elemento *prox;
+    struct elemento *ant;
+} *Elem;
 
 typedef struct lista{
-    Elem* inicio;
-    Elem* final;
+    Elem inicio;
+    Elem final;
     int qtd;
-}* Lista;
+} *Lista;
 
 Lista criar_lista(){
     Lista li = malloc(sizeof(struct lista));
@@ -24,17 +23,17 @@ Lista criar_lista(){
     return li;
 }
 
-// TODO: falta verificar li
-int inserir_inicio(Lista li, int valor){
-    Elem* no = malloc(sizeof(Elem));
-    if(no != NULL){
+int inserir_inicio(Lista li, int valor) {
+    if (li == NULL) return 1;
+    Elem no = malloc(sizeof(struct elemento));
+    if (no != NULL) {
         no->valor = valor;
         no->prox = li->inicio;
         no->ant = NULL;
-        
-        if(li->inicio != NULL){
+
+        if (li->inicio != NULL) {
             li->inicio->ant = no;
-        }else{
+        } else {
             li->final = no;
         }
         li->inicio = no;
@@ -45,31 +44,29 @@ int inserir_inicio(Lista li, int valor){
 }
 
 
-int inserir_final(Lista li, int valor){
-    if(li == NULL)
-        return 1;
-    Elem* no = malloc(sizeof(Elem));
-    if(no == NULL)
-        return 1;
+int inserir_final(Lista li, int valor) {
+    if (li == NULL) return 1;
+    Elem no = malloc(sizeof(struct elemento));
+    if (no == NULL) return 1;
     no->valor = valor;
     no->prox = NULL;
     no->ant = li->final;
-    if(li->final != NULL){
+
+    if (li->final != NULL) {
         li->final->prox = no;
-    }else{
+    } else {
         li->inicio = no;
     }
     li->final = no;
     li->qtd++;
     return 0;
-    
 }
 
-int remover_inicio(Lista li){
+int remover_inicio(Lista li) {
     if(li->inicio == NULL){
         return 1;
     }
-    Elem* no = li->inicio;
+    Elem no = li->inicio;
     li->inicio = no->prox;
     li->inicio->ant = NULL;
     li->qtd--;
@@ -80,7 +77,7 @@ int remover_inicio(Lista li){
 int remover_final(Lista li){
     if(li == NULL || li->inicio == NULL || li->qtd == 0)
         return 1;
-    Elem* no = li->final;
+    Elem no = li->final;
     li->final = no->ant;
 
     if(li->final != NULL){
@@ -111,9 +108,9 @@ int acessar_final(Lista li, int* valor){
 
 void destruir(Lista li){
     if(li != NULL){
-        Elem* no = li->inicio;
+        Elem no = li->inicio;
         while(no != NULL){
-            Elem *prox = no->prox;
+            Elem prox = no->prox;
             free(no);
             no = prox;
         }
@@ -132,7 +129,7 @@ int tamanho_lista(Lista li){
         return 0;
 
     int count = 0;
-    Elem* aux = li->inicio;
+    Elem aux = li->inicio;
     while(aux != NULL){
         count++;
         aux = aux->prox;

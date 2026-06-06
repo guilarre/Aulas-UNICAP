@@ -3,7 +3,7 @@
 
 typedef struct elemento {
     int valor;
-    struct elemento *prox;
+    struct elemento *prox; //proximo abaixo do topo
 } *Elem;
 
 typedef struct pilha {
@@ -24,11 +24,8 @@ int push(Pilha p, int valor) {
     Elem no = malloc(sizeof(struct elemento));
     if (no == NULL) return 1;
     no->valor = valor;
-    if (p->qtd == 0) { // caso seja vazia
-        no->prox = NULL;
-    } else { // caso tenha um elem ou mais
-        no->prox = p->topo;
-    }
+    // CORRECTION: topo já é ou NULL qnd p tá vazia ou contém algo, então n precisa checar qtd
+    no->prox = p->topo;
     p->topo = no;
     p->qtd++;
     return 0;

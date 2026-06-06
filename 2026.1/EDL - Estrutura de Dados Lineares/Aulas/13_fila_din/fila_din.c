@@ -47,13 +47,14 @@ int dequeue(Fila f) {
         f->inicio = NULL;
         f->final = NULL;
     } else {
-        f->inicio = f->inicio->prox;
-        free(f->inicio);
+        Elem aux = f->inicio; //quem vai sair
+        f->inicio = f->inicio->prox; //novo início
+        free(aux);
     }
     f->qtd--;
     return 0;
 }
 
 int is_empty(Fila f) {
-    
+    // TODO:
 }
