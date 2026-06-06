@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// Lista unicamente encadeada
+// Lista duplamente encadeada
 
 // cria_lista
 // libera_lista
@@ -19,11 +19,12 @@
 typedef struct elemento {
     int valor;
     struct elemento *prox;
+    struct elemento *ant;
 } *Elem;
 
 typedef struct lista {
     int qtd;
-    Elem inicio;
+    Elem inicio, final;
 } *Lista;
 
 Lista cria_lista() {
@@ -31,6 +32,7 @@ Lista cria_lista() {
     if (li == NULL) return NULL;
     li->qtd = 0;
     li->inicio = NULL;
+    li->final = NULL;
     return li;
 }
 
@@ -39,7 +41,13 @@ int insere_inicio(Lista li, int valor) {
     Elem no = malloc(sizeof(struct elemento));
     if (no == NULL) return 1;
     no->valor = valor;
-    no->prox = li->inicio; //NULL ou elem
+    no->ant = NULL;
+    no->prox = li->inicio;
+    if (li->qtd == 0) {
+        li->final = no;
+    } else {
+        li->inicio->ant = no;
+    }
     li->inicio = no;
     li->qtd++;
     return 0;
@@ -50,62 +58,48 @@ int insere_final(Lista li, int valor) {
     Elem no = malloc(sizeof(struct elemento));
     if (no == NULL) return 1;
     no->valor = valor;
+    no->ant = li->final;
     no->prox = NULL;
-    if (li->inicio == NULL) { //nenhum elem
+    if (li->qtd == 0) {
         li->inicio = no;
     } else {
-        Elem aux = li->inicio;
-            while (aux->prox != NULL) { //para no ultimo
-                aux = aux->prox;
-            }
-        aux->prox = no;
+        li->final->prox = no;
     }
+    li->final = no;
     li->qtd++;
     return 0;
 }
 
 int remove_inicio(Lista li) {
-    if (li == NULL || li->inicio == NULL) return 1;
-    if (li->inicio->prox == NULL) { //só 1 elem
+    if (li == NULL || li->qtd == 0) return 1;
+    if (li->qtd == 1) {
         free(li->inicio);
         li->inicio = NULL;
-    } else { // + de 1 elem
-        Elem aux = li->inicio;
-        li->inicio = li->inicio->prox;
-        free(aux);
+        li->final = NULL;
+    } else {
+        Elem aux = li->inicio->prox;
+        aux->ant = NULL;
+        free(li->inicio);
+        li->inicio = aux;
     }
     li->qtd--;
     return 0;
 }
 
 int remove_final(Lista li) {
-    if (li == NULL || li->inicio == NULL) return 1;
-    if (li->inicio->prox == NULL) { //só 1 elem
-        free(li->inicio);
+    if (li == NULL || li->qtd == 0) return 1;
+    Elem aux = li->final->ant;
+    if (li->qtd == 1) {
+        free(li->final);
+        li->final = NULL;
         li->inicio = NULL;
-    } else { // + de 1 elem
-        //pq precisa pegar o penultimo
-        Elem aux = li->inicio;
-        Elem ant;
-        while (aux->prox != NULL) {
-            ant = aux;
-            aux = aux->prox;
-        }
-        free(aux);
-        ant->prox = NULL;
+    } else {
+        free(li->final);
+        aux->prox = NULL;
+        li->final = aux;
     }
     li->qtd--;
-    return 0;
-}
-
-int lista_vazia(Lista li) {
-    if (li == NULL || li->qtd == 0) return 1;
-    return 0;
-}
-
-int tamanho_lista(Lista li) {
-    if (li == NULL || li->qtd == 0) return 0;
-    return li->qtd;
+    return 1;
 }
 
 void imprime_lista(Lista li) {
@@ -122,20 +116,24 @@ void imprime_lista(Lista li) {
 
 void imprime_lista_reverso(Lista li) {
     if (li != NULL && li->qtd != 0) {
-        int topo = 0;
-        int *pilha = malloc(sizeof(int) * li->qtd);
-        Elem aux = li->inicio;
+        Elem aux = li->final;
+        printf("Elementos invertidos = [ ");
         while (aux != NULL) {
-            pilha[topo++] = aux->valor;
-            aux = aux->prox;
-        }
-        printf("Elementos reverso = [ ");
-        while (topo > 0) {
-            printf("%d ", pilha[topo - 1]);
-            topo--;
+            printf("%d ", aux->valor);
+            aux = aux->ant;
         }
         printf("]\n");
     }
+}
+
+int tamanho_lista(Lista li) {
+    if (li == NULL || li->qtd == 0) return 0;
+    return li->qtd;
+}
+
+int lista_vazia(Lista li) {
+    if (li == NULL || li->qtd == 0) return 1;
+    return 0;
 }
 
 Elem busca_valor(Lista li, int valor) {
@@ -145,20 +143,20 @@ Elem busca_valor(Lista li, int valor) {
         if (aux->valor == valor) return aux;
         aux = aux->prox;
     }
-    printf("Não foi encontrado elemento com o valor %d\n", valor);
+    printf("Não há elemento de valor '%d' na lista! :(\n", valor);
     return NULL;
 }
 
 Elem consulta_lista_posicao(Lista li, int pos) {
     if (li == NULL || li->qtd == 0) return NULL;
     Elem aux = li->inicio;
-    int i = 0; //pra comparar a posição passada
+    int i = 0;
     while (aux != NULL) {
         if (i == pos) return aux;
-        aux = aux->prox;
         i++;
+        aux = aux->prox;
     }
-    printf("Não há elementos na posição %d\n", i);
+    printf("Não existe elemento na posição '%d'! :(\n", pos);
     return NULL;
 }
 
@@ -179,35 +177,43 @@ int main() {
     Lista li = cria_lista();
 
     printf("Lista vazia? R: %d\n", lista_vazia(li));
-    printf("Inserindo elementos...\n");
 
-    insere_inicio(li, 1);
-    insere_inicio(li, 2);
-    insere_inicio(li, 3);
+    insere_final(li, 1);
+    insere_final(li, 2);
+    insere_final(li, 3);
     remove_inicio(li);
-    insere_final(li, 4);
-    insere_final(li, 5);
+    insere_inicio(li, 4);
+    insere_inicio(li, 5);
+    insere_inicio(li, 6);
     remove_final(li);
-    insere_final(li, 6);
-    insere_final(li, 7);
 
     printf("Lista vazia? R: %d\n", lista_vazia(li));
-    printf("Qtd elem = %d\n", tamanho_lista(li));
 
     imprime_lista(li);
     imprime_lista_reverso(li);
 
-    busca_valor(li, 3);
-    busca_valor(li, 1);
+    int valor = 1;
+    if (busca_valor(li, valor) != NULL) {
+        printf("Valor '%d' encontrado!\n", valor);
+    }
+    valor = 5;
+    if (busca_valor(li, valor) != NULL) {
+        printf("Valor '%d' encontrado!\n", valor);
+    }
 
-    int pos = 2;
-    Elem elem_consulta = consulta_lista_posicao(li, pos);
-    if (elem_consulta) {
-        int valor_consulta = elem_consulta->valor;
-        printf("Valor do elemento na pos '%d': %d\n", pos, valor_consulta);
+    int pos = 0;
+    Elem elem = consulta_lista_posicao(li, pos);
+    if (elem != NULL) {
+        printf("Valor encontrado na posição '%d': %d\n", pos, elem->valor);
+    }
+    pos = 9;
+    elem = consulta_lista_posicao(li, pos);
+    if (elem != NULL) {
+        printf("Valor encontrado na posição '%d': %d\n", pos, elem->valor);
     }
 
     libera_lista(li);
 
     return 0;
 }
+
