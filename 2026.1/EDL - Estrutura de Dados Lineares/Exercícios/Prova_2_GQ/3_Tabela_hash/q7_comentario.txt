@@ -1,0 +1,39 @@
+Tabela com 9 posições:
+
+#########################
+###### Tabela hash ######
+
+tabela[0]:
+tabela[1]:      28 19 10 
+tabela[2]:      20 
+tabela[3]:      12 
+tabela[4]:
+tabela[5]:      5 
+tabela[6]:      15 33 
+tabela[7]:      7 
+tabela[8]:
+
+#########################
+
+Tabela com 11 posições:
+
+#########################
+###### Tabela hash ######
+
+tabela[0]:      33 
+tabela[1]:      12 
+tabela[2]:
+tabela[3]:
+tabela[4]:      15 
+tabela[5]:      5 
+tabela[6]:      28 
+tabela[7]:      7 
+tabela[8]:      19 
+tabela[9]:      20 
+tabela[10]:     10 
+
+#########################
+
+é possível observar que quando escolhemos um número primo para o tamanho da tabela hash (11), quando usamos uma função hash de divisão, conseguimos atingir um espalhamento muito melhor e consequentemente menos colisões que quando escolhemos um número não primo (9).
+
+para 9 posições, obtivemos 3 colisões, enquanto para 11, 0.
