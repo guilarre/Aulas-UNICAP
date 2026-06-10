@@ -55,16 +55,16 @@ int inserir_hash(Tabela_hash tabela, int chave, int metodo) {
             }
             break;
         case 3:
-            pos = sondagem_quad_mod(chave, i && i < TABLE_SIZE);
-            while (tabela->array[pos].valor != -1) {
+            pos = sondagem_quad_mod(chave, i);
+            while (tabela->array[pos].valor != -1 && i < TABLE_SIZE) {
                 i++;
                 tabela->array[pos].colidiu = 1;
                 pos = sondagem_quad_mod(chave, i);
             }
             break;
         case 4:
-            pos = sondagem_hash_duplo(chave, i && i < TABLE_SIZE);
-            while (tabela->array[pos].valor != -1) {
+            pos = sondagem_hash_duplo(chave, i);
+            while (tabela->array[pos].valor != -1 && i < TABLE_SIZE) {
                 i++;
                 tabela->array[pos].colidiu = 1;
                 pos = sondagem_hash_duplo(chave, i);
@@ -92,7 +92,7 @@ void printa_tabela(Tabela_hash tabela) {
 }
 
 void destroi_tabela(Tabela_hash tabela) {
-    if (tabela != NULL && tabela->qtd != 0) {
+    if (tabela != NULL) {
         free(tabela);
     }
 }
