@@ -1,0 +1,59 @@
+1. Um sistema operacional é apresentado como um programa responsável pelo gerenciamento do hardware de um computador. Explique, com suas palavras, por que os programas aplicativos normalmente não acessam diretamente todos os recursos de hardware.
+
+2. O material divide um sistema de computação em quatro componentes: hardware, sistema operacional, programas aplicativos e usuários. Explique qual é o papel de cada componente e como eles se relacionam durante a utilização de um computador.
+
+3. Considere que um usuário está utilizando um navegador para acessar uma página na Internet. Descreva, conceitualmente, como usuário, programa aplicativo, sistema operacional e hardware participam dessa atividade.
+
+4. O material afirma que alguns sistemas operacionais são projetados principalmente para eficiência, enquanto outros precisam também oferecer conveniência ao usuário. Explique por que os requisitos de um sistema operacional utilizado em um mainframe podem ser diferentes dos requisitos de um sistema operacional utilizado em um computador pessoal.
+
+5. O que é o kernel e qual é a sua relação com o sistema operacional?
+
+6. Explique a diferença entre kernel, programas do sistema e programas aplicativos. Apresente pelo menos um exemplo de cada categoria.
+
+7. Imagine que alguém afirme: "Tudo que vem instalado junto com o Windows ou com uma distribuição Linux faz parte do kernel." Analise essa afirmação e explique por que ela pode estar incorreta.
+
+8. Descreva, em ordem, o que acontece desde o momento em que um computador é ligado até o momento em que o kernel do sistema operacional começa a ser executado. Em sua resposta, utilize os conceitos de bootstrap, firmware, memória e kernel.
+
+9. Por que o computador precisa de um programa inicial, como o bootstrap, antes que o próprio sistema operacional possa ser executado?
+
+10. Depois que o kernel é carregado, outros programas do sistema podem ser iniciados. Explique o papel desses programas e o que o material chama de daemons do sistema.
+
+11. Um computador moderno possui CPU, memória e diferentes controladores de dispositivos. Explique por que dispositivos como disco, teclado, mouse e impressora não precisam ser controlados diretamente pela CPU durante todo o tempo.
+
+12. Explique o conceito de interrupção e por que as interrupções são importantes para o funcionamento de um sistema operacional.
+
+13. O material apresenta uma linha do tempo de interrupções mostrando períodos de execução de um processo, solicitações de entrada e saída e momentos em que o dispositivo está realizando uma transferência. Explique o que acontece com a CPU quando uma operação de entrada e saída é concluída.
+
+14. Imagine que um programa solicite a gravação de um arquivo no disco. Explique por que seria ineficiente manter a CPU simplesmente esperando até que toda a operação de gravação fosse concluída.
+
+15. O material apresenta tanto interrupções geradas por hardware quanto operações realizadas pelo software por meio de chamadas de sistema. Explique por que um programa aplicativo precisa utilizar mecanismos fornecidos pelo sistema operacional para solicitar determinados serviços.
+
+16. O material afirma que "sistemas operacionais transformam hardwares feios em belas abstrações". Explique o significado dessa afirmação.
+
+17. Escolha um recurso de hardware, como disco, memória, teclado ou placa de rede, e explique uma abstração fornecida pelo sistema operacional que facilite sua utilização pelos programas.
+
+18. Imagine que os desenvolvedores de aplicativos precisassem conhecer todos os detalhes técnicos específicos de cada modelo de SSD, teclado, placa gráfica e dispositivo conectado ao computador. Quais seriam as consequências para o desenvolvimento de software? Relacione sua resposta com o papel do sistema operacional.
+
+19. Explique por que um programa precisa estar na memória principal para que suas instruções possam ser executadas pela CPU.
+
+20. O material apresenta uma hierarquia dos dispositivos de armazenamento. Explique por que um computador utiliza diferentes tipos de armazenamento em vez de utilizar apenas um único tipo para todas as informações.
+
+21. A hierarquia apresentada contém registradores, cache, memória principal e diferentes dispositivos de armazenamento. Explique quais características justificam a organização desses componentes em uma hierarquia.
+
+22. Considere dois cenários: acessar um dado que já está próximo da CPU e acessar um dado armazenado permanentemente em um dispositivo de armazenamento. Explique por que esses dois acessos podem apresentar tempos muito diferentes.
+
+23. O material apresenta uma arquitetura contendo várias CPUs, cada uma com seus próprios registradores e cache, compartilhando memória. Explique quais vantagens um sistema desse tipo pode apresentar quando comparado a um sistema com apenas uma CPU.
+
+24. Em um sistema com múltiplas CPUs utilizando uma memória compartilhada, que tipo de responsabilidade adicional o sistema operacional passa a ter? Não é necessário apresentar mecanismos específicos. Concentre sua resposta na necessidade de gerenciar e coordenar os recursos disponíveis.
+
+25. Com base no diagrama apresentado no material, explique a posição do sistema operacional entre o hardware e os programas utilizados pelo usuário.
+
+26. O diagrama diferencia modo usuário e modo núcleo. A partir da organização mostrada, explique por que programas como navegador, leitor de e-mail ou reprodutor de música não deveriam possuir o mesmo nível de acesso ao computador que o sistema operacional.
+
+27. Explique, com suas palavras, o que é um processo em um sistema operacional.
+
+28. Por que simplesmente dizer que "processo é um programa" não é suficiente?
+
+29. O material afirma que programa é uma entidade passiva, enquanto processo é uma entidade ativa. Explique essa diferença e apresente um exemplo que a deixe clara.
+
+30. Considere que o arquivo executável de um navegador está armazenado no SSD do computador. Explique em que momento esse programa passa a ser considerado um processo.

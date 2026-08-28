@@ -165,13 +165,15 @@ int tamanho_lista(Lista li) {
 }
 
 void libera_lista(Lista li) {
-    if (li != NULL && li->qtd != 0) {
-        Elem aux = li->final->prox;
-        Elem prox;
-        while (aux != li->final) {
-            prox = aux->prox;
-            free(aux);
-            aux = prox;
+    if (li != NULL) {
+        if (li->qtd != 0) {
+            Elem aux = li->final->prox;
+            Elem prox;
+            for (int i = 0; i < li->qtd; i++) {
+                prox = aux->prox;
+                free(aux);
+                aux = prox;
+            }
         }
         free(li);
     }

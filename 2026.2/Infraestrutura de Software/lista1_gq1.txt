@@ -1,0 +1,62 @@
+2.
+
+- O hardware é a parte física do computador. Por exemplo, memória RAM, dispositivos de armazenamento, dispositivos de entrada e saída (E/S), etc.
+- O sistema operacional (SO) é o programa que nunca é desligado enquanto o computador funciona. Ele possui o kernel, camada que orquestra todos os dispositivos de hardware e E/S, executa programas e oferece uma interface ao usuário.
+- Aplicativos, ou programas, são códigos que serão executados pela CPU e resolvem problemas como editar texto, reproduzir música, gerenciar bancos de dados, etc.
+- Usuários são quem interagem com o SO e usam os programas em seu dia a dia. SOs gerenciam diferentes permissões no sistema para diferentes pessoas usuárias.
+
+3. Um usuário possui acesso ao sistema operacional e, consequentemente, aos aplicativos para os quais ele tem permissão. Ele pode digitar um endereço num navegador (programa aplicativo) para acessar algum site que resolva um problema seu, como por exemplo, reproduzir algum vídeo no YouTube. Ao digitar o endereço, é o kernel do SO que orquestra a digitação do usuário no dispositivo de entrada (teclado) e envia ao navegador o que o usuário quer escrever.
+
+4. Um SO de mainframe vai ser mais otimizado para volumes de trabalho maiores que SOs de uso pessoal, que são mais focados em conveniência e uso gráfico. SOs de mainframe podem também possuir compatibilidade maior com programas legado do que os de uso pessoal e oferecer maiores opções de segurança.
+
+5. O kernel é a camada mais profunda do SO, que orquestra o acesso e utilização de recursos de hardware. Todos os processos que precisam usar recursos de hardware, como a memória RAM, por exemplo, precisam comunicar-se primeiro com o kernel, que intermedia o acesso.
+
+6. Como explicado na resposta anterior, kernel é uma camada de programas do próprio sistema que intermediam o acesso dos programas do espaço de usuário (aplicativos) aos recursos de hardware do sistema. No linux, temos como exemplos: Libreoffice (editor de documentos) como programa aplicativo e o glibc (biblioteca padrão da linguagem C do kernel do linux), que permite que o usuário escreva na janela do Libreoffice.
+
+7. Está incorreta, porque existem aplicativos de usuário que são entregues juntos aos de sistema, como o Notepad, reprodutor de mídia, aplicativo do Xbox, etc. (Windows) e não são parte do kernel.
+
+8. Quando o computador é ligado, o firmware executa verificações de hardware necessárias, como checar a RAM, memória de vídeo, etc. Após isso, o computador precisa de acesso a instruções iniciais que estão contidas na memória ROM na placa-mãe. Esse programa inicial é o que dá início ao processo de bootstrap (que possui programas necessários para a inicialização do SO), e em sequência, ele encontra no disco a posição inicial do kernel, para poder carregá-lo na memória RAM e, consigo, os programas necessários para iniciar o SO em si.
+
+9. O computador precisa de um programa inicial, base, que seja universal a todos os SOs possíveis e traga ferramentas fundamentais para a inicialização, como programas para checagem de hardware, instruções específicas do fabricante, etc.
+
+10. O kernel é a parte mais essencial do SO. Somente a partir do seu carregamento, outros programas podem ser carregados, pois é o kernel que gerencia acesso ao hardware, e todo programa precisa ser carregado na memória RAM para ser executado. Os daemons (nomenclatura do linux/unix) são programas que estão em execução continuamente e não necessariamente são parte do kernel. Eles ficam aguardando algum evento, como por exemplo, o daemon de fila de impressão.
+
+11. Existem centenas de processos que precisam ser executados em um SO moderno ao mesmo tempo, mas a CPU geralmente não executa instruções de maneira simultânea. Assim, dispositivos de entrada e saída e de armazenamento só são controlados pela CPU quando é necessário, pois quando não é, a CPU está lidando com outros processos.
+
+12. Dando sequência à resposta anterior, o conceito de interrupção está relacionado justamente ao momento em que a CPU está executando instruções de algum programa (por exemplo, o Word), e o usuário aciona um dispositivo de entrada (e.g. o mouse). Nesse momento, a CPU interrompe a execução do Word para mexer o mouse na tela e executa instruções de clique do usuário. Esse conceito é importante, pois sem interrupção do processo em background, o mouse só seria mexido na tela muito tempo depois, quando o processo que a CPU esteja atualmente termine.
+
+13. Quando uma operação de E/S é finalizada, a CPU retorna ao processo em que estava anteriormente.
+
+14. Seria ineficiente, pois o sistema ficaria bloqueado esperando a operação ser finalizada. O usuário precisa poder trabalhar enquanto a operação é realizada no plano de fundo.
+
+15. Pelo mesmo motivo já explicado anteriormente. O kernel possui acesso ao hardware, e aplicativos não, por questões de segurança.
+
+16. Porque nada que acontece por baixo dos panos é visto pelo usuário. As operações de disco, complexidades do gerenciamento de memória e registradores da CPU, por exemplo, são abstraídos do usuário, transformando tudo em um sistema coeso e simplificado.
+
+17. A leitura e escrita em disco rígido envolvem localizações físicas endereçadas por cilindros, cabeça e setor. O SO abstrai esse endereçamento em arquivos e pastas, facilitando o trabalho do usuário.
+
+18. Seria impossível desenvolver software para um público amplo. Um software que funciona em um computador não iria funcionar em outro, e os desenvolvedores teriam que encontrar outra maneira de abstrair as diferenças de hardware. Atualmente, os SOs têm o papel de realizar esse trabalho, sendo compatíveis com periféricos e hardware de diferentes fabricantes, trazendo um ambiente padrão para o desenvolvimento acontecer (API). O desenvolvedor escreve o código uma vez, e é o SO que se adapta ao hardware presente.
+
+19. Porque a CPU só se comunica diretamente com suas memórias primárias (registradores, caches e RAM), e não possui acesso direto às secundárias (HD, discos externos, etc.). Somente assim ela opera de maneira rápida, pois as memórias secundárias são mais lentas. Dessa forma, para ser executada uma instrução, ela precisa ser carregada da secundária para a primária, para então a CPU acessá-la.
+
+20. Porque as memórias possuem funções e velocidades diferentes. A memória primária (RAM) deve ser muito rápida, mas não é possível que ela seja tão grande quanto a memória secundária, que é grande, mas mais lenta. Separando o trabalho em memórias diferentes, obtem-se um equilíbrio ideal.
+
+21. Novamente, velocidade e capacidade são os critérios para a organização. Com a tecnologia atual, não é possível ter somente uma memória para tudo, que seja a mais rápida, de maior capacidade e mais barata. A memória cache e registradores são as que vivem próximas da CPU, e portanto são as mais rápidas, mas as de menor capacidade e não persistem os dados armazenados. A RAM é rápida e também volátil, e a memória secundária é a mais lenta, mas armazena permanentemente os dados e é mais barata.
+
+22. Pelo mesmo motivo já explicado anteriormente. Um dado próximo da CPU geralmente está armazenado em uma memória que possui maior velocidade por natureza. A distância também tem uma influência, apesar de não ser comparável nesse caso. Já um dispositivo de armazenamento permanente equilibra maior capacidade e permanência dos dados com menor velocidade de leitura e escrita.
+
+23. Nesse tipo de sistema, é possível desenvolver programas que utilizem as diferentes CPUs e threads ao mesmo tempo. Diferentemente da CPU única, que só pode executar um processo por vez, esse sistema executa diferentes processos simultaneamente.
+
+24. Nesse tipo de sistema, é necessário coordenar o trabalho das CPUs com bastante cuidado para que uma CPU não altere o dado que outra CPU está trabalhando. Além disso, o programa deve balancear as cargas de processos, para que uma CPU não tenha todo o trabalho e as outras permaneçam ociosas.
+
+25. Já foi respondido nas questões 1, 2, 5, 6 e 10.
+
+26. Idem. Qualquer programa de usuário não deve ter o mesmo nível de acesso que o SO por questões de segurança, como já descrito nas questões 1, 2, 5, 6, 10 e 15.
+
+27. Um processo é uma abstração da execução de um programa na CPU.
+
+28. Enquanto o programa é o código em si de um aplicativo, o processo é a execução desse código na CPU. É possível, por exemplo, que um único programa possua diversos processos relacionados a ele sendo executados.
+
+29. O programa é um pedaço de código real armazenado em disco. Por exemplo, um programa de calculadora. Ele é uma entidade passiva enquanto não é executado e só ocupa espaço em disco. No momento em que clicamos nele para abri-lo, ele é carregado na RAM e funciona ativamente na CPU (torna-se uma entidade ativa), o que permite que ele realize cálculos reais.
+
+30. Novamente, quando clicamos para abrir o programa de navegador, ele torna-se processo. Ele é carregado na RAM e executado na CPU, permitindo a interação do usuário com ele.

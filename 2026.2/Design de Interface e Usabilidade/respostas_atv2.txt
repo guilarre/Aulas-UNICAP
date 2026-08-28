@@ -1,0 +1,5 @@
+1. Semiótica é a disciplina que estuda as diferentes linguagens (verbal, visual, gestos, etc.) e os signos que as compõem. Podemos usar esse estudo para facilitar e agilizar o entendimento do usuário, substituindo, por exemplo, elementos textuais por visuais.
+
+2. Um ícone é um símbolo que é usado para representar uma função específica de um sistema em sua interface. Geralmente é útil para substituir mensagens escritas em representações visuais facilmente reconhecíveis.
+
+3. 
