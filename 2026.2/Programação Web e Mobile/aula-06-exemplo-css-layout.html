@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS - Layout, Bordas e Efeitos Visuais</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #065A82;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #1C7293;
+            margin-bottom: 40px;
+        }
+
+        .secao {
+            background: white;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 1200px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1C7293;
+            border-bottom: 3px solid #065A82;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* ============================================
+           SEÇÃO 1: BOX MODEL
+           ============================================ */
+        
+        .box-model-demo {
+            background: #FFE6CC;
+            padding: 40px;
+            margin: 30px auto;
+            border: 8px solid #0066CC;
+            width: 400px;
+            text-align: center;
+        }
+
+        .box-model-demo .content {
+            background: #FFCCCC;
+            padding: 20px;
+            border: 4px solid #CC0000;
+        }
+
+        .box-model-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .margin-info { background: #FFE6CC; border: 2px solid #FF9933; }
+        .border-info { background: #CCE5FF; border: 2px solid #0066CC; }
+        .padding-info { background: #CCFFCC; border: 2px solid #00CC00; }
+        .content-info { background: #FFCCCC; border: 2px solid #CC0000; }
+
+        /* ============================================
+           SEÇÃO 2: MARGIN E PADDING
+           ============================================ */
+        
+        .spacing-demo {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .spacing-box {
+            background: #1C7293;
+            color: white;
+            padding: 20px;
+            margin: 15px;
+            width: 150px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .no-margin { margin: 0; }
+        .margin-auto { margin: 20px auto; }
+
+        /* ============================================
+           SEÇÃO 3: BORDAS
+           ============================================ */
+        
+        .border-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .border-box {
+            padding: 20px;
+            text-align: center;
+            background: #f9f9f9;
+        }
+
+        .border-solid { border: 4px solid #065A82; }
+        .border-dashed { border: 4px dashed #1C7293; }
+        .border-dotted { border: 4px dotted #FF8C00; }
+        .border-double { border: 6px double #663399; }
+        .border-groove { border: 6px groove #28A745; }
+        .border-ridge { border: 6px ridge #DC3545; }
+
+        .border-individual {
+            border-top: 4px solid red;
+            border-right: 4px dashed green;
+            border-bottom: 4px dotted blue;
+            border-left: 4px double purple;
+        }
+
+        /* ============================================
+           SEÇÃO 4: BORDER RADIUS
+           ============================================ */
+        
+        .radius-showcase {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .radius-box {
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .radius-0 { border-radius: 0; }
+        .radius-10 { border-radius: 10px; }
+        .radius-25 { border-radius: 25px; }
+        .radius-50 { border-radius: 50%; }
+
+        .radius-custom {
+            border-top-left-radius: 50px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 50px;
+            border-bottom-left-radius: 10px;
+        }
+
+        /* ============================================
+           SEÇÃO 5: OUTLINE
+           ============================================ */
+        
+        .outline-demo {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .outline-box {
+            padding: 30px;
+            background: #E8F4F8;
+            border: 3px solid #1C7293;
+        }
+
+        .with-outline {
+            outline: 4px solid #FF8C00;
+            outline-offset: 5px;
+        }
+
+        .outline-dashed {
+            outline: 4px dashed #28A745;
+            outline-offset: 10px;
+        }
+
+        /* ============================================
+           SEÇÃO 6: BOX SHADOW
+           ============================================ */
+        
+        .shadow-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .shadow-box {
+            padding: 30px;
+            background: white;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .shadow-basic {
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+        }
+
+        .shadow-soft {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .shadow-strong {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .shadow-inset {
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        .shadow-colored {
+            box-shadow: 
+                5px 5px 0 #FF6B6B,
+                10px 10px 0 #4ECDC4,
+                15px 15px 0 #45B7D1;
+        }
+
+        .shadow-hover {
+            transition: box-shadow 0.3s ease;
+        }
+
+        .shadow-hover:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        /* ============================================
+           SEÇÃO 7: TEXT SHADOW
+           ============================================ */
+        
+        .text-shadow-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .text-demo {
+            font-size: 36px;
+            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        .text-shadow-basic {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .text-shadow-neon {
+            color: #00ff00;
+            text-shadow: 
+                0 0 10px #00ff00,
+                0 0 20px #00ff00,
+                0 0 30px #00ff00;
+            background: #000;
+        }
+
+        .text-shadow-3d {
+            color: #fff;
+            text-shadow: 
+                1px 1px 0 #ccc,
+                2px 2px 0 #c9c9c9,
+                3px 3px 0 #bbb,
+                4px 4px 0 #b9b9b9,
+                5px 5px 0 #aaa,
+                6px 6px 5px rgba(0,0,0,.1);
+        }
+
+        .text-shadow-colorful {
+            text-shadow: 
+                2px 2px 0 #FF6B6B,
+                4px 4px 0 #4ECDC4,
+                6px 6px 0 #45B7D1,
+                8px 8px 0 #96CEB4;
+        }
+
+        /* ============================================
+           SEÇÃO 8: OPACITY E RGBA
+           ============================================ */
+        
+        .opacity-demo {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .opacity-box {
+            height: 150px;
+            background: #1C7293;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+
+        .opacity-100 { opacity: 1; }
+        .opacity-75 { opacity: 0.75; }
+        .opacity-50 { opacity: 0.5; }
+        .opacity-25 { opacity: 0.25; }
+
+        .rgba-demo {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .rgba-box {
+            padding: 30px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .rgba-bg {
+            background: rgba(28, 114, 147, 0.5);
+        }
+
+        .rgba-bg-opaque {
+            background: rgba(28, 114, 147, 0.9);
+        }
+
+        /* ============================================
+           SEÇÃO 9: DISPLAY
+           ============================================ */
+        
+        .display-demo {
+            margin-top: 20px;
+        }
+
+        .display-block {
+            display: block;
+            background: #FFE6CC;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #FF9933;
+        }
+
+        .display-inline {
+            display: inline;
+            background: #CCE5FF;
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #0066CC;
+        }
+
+        .display-inline-block {
+            display: inline-block;
+            background: #CCFFCC;
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid #00CC00;
+            width: 150px;
+            text-align: center;
+        }
+
+        .display-none {
+            display: none;
+        }
+
+        .display-flex {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .flex-item {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+            text-align: center;
+        }
+
+        /* ============================================
+           SEÇÃO 10: POSITION
+           ============================================ */
+        
+        .position-container {
+            position: relative;
+            height: 400px;
+            background: #f0f0f0;
+            border: 2px solid #999;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .position-static {
+            position: static;
+            background: #FFE6CC;
+            padding: 15px;
+            margin: 10px;
+            border: 2px solid #FF9933;
+        }
+
+        .position-relative {
+            position: relative;
+            top: 20px;
+            left: 20px;
+            background: #CCE5FF;
+            padding: 15px;
+            border: 2px solid #0066CC;
+        }
+
+        .position-absolute {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            background: #CCFFCC;
+            padding: 15px;
+            border: 2px solid #00CC00;
+        }
+
+        .position-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #FF6B6B;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .position-fixed:hover {
+            background: #FF5252;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* ============================================
+           UTILITÁRIOS
+           ============================================ */
+        
+        .code-example {
+            background: #2C3E50;
+            color: #ECF0F1;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            background: #FFFF00;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background: #1C7293;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS - Layout, Bordas e Efeitos Visuais</h1>
+    <p class="subtitle">Demonstrações Interativas e Práticas</p>
+
+    <!-- ============================================
+         SEÇÃO 1: BOX MODEL
+         ============================================ -->
+    <div class="secao">
+        <h2>1. Box Model - Modelo de Caixa</h2>
+        <p>Cada elemento HTML é uma "caixa" composta por 4 partes:</p>
+        
+        <div class="box-model-demo">
+            <strong>MARGIN (margem externa - laranja)</strong>
+            <div style="background: #CCE5FF; padding: 20px; margin-top: 15px; border: 4px solid #0066CC;">
+                <strong>BORDER (borda - azul)</strong>
+                <div style="background: #CCFFCC; padding: 20px; margin-top: 15px; border: 4px solid #00CC00;">
+                    <strong>PADDING (preenchimento - verde)</strong>
+                    <div class="content">
+                        <strong>CONTENT</strong><br>
+                        (conteúdo - vermelho)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-model-info">
+            <div class="info-box margin-info">
+                <strong>MARGIN</strong><br>
+                Espaço externo<br>
+                margin: 40px;
+            </div>
+            <div class="info-box border-info">
+                <strong>BORDER</strong><br>
+                Borda<br>
+                border: 8px solid;
+            </div>
+            <div class="info-box padding-info">
+                <strong>PADDING</strong><br>
+                Espaço interno<br>
+                padding: 20px;
+            </div>
+            <div class="info-box content-info">
+                <strong>CONTENT</strong><br>
+                Conteúdo real<br>
+                width x height
+            </div>
+        </div>
+
+        <div class="code-example">
+.box {<br>
+&nbsp;&nbsp;width: 200px;<br>
+&nbsp;&nbsp;height: 100px;<br>
+&nbsp;&nbsp;padding: 20px;<br>
+&nbsp;&nbsp;border: 5px solid black;<br>
+&nbsp;&nbsp;margin: 15px;<br>
+}
+        </div>
+    </div>
+
+    <!-- ============================================
+         SEÇÃO 2: MARGIN E PADDING
+         ============================================ -->
+    <div class="secao">
+        <h2>2. Margin e Padding - Espaçamentos</h2>
+        
+        <table>
+            <tr>
+                <th>Sintaxe</th>
+                <th>Exemplo</th>
+                <th>Significado</th>
+            </tr>
+            <tr>
+                <td><strong>1 valor</strong></td>
+                <td><code>margin: 20px;</code></td>
+                <td>Todos os lados = 20px</td>
+            </tr>
+            <tr>
+                <td><strong>2 valores</strong></td>
+                <td><code>margin: 10px 20px;</code></td>
+                <td>Top/Bottom = 10px, Left/Right = 20px</td>
+            </tr>
+            <tr>
+                <td><strong>4 valores</strong></td>
+                <td><code>margin: 10px 20px 30px 40px;</code></td>
+                <td>Top, Right, Bottom, Left (sentido horário)</td>
+            </tr>
+            <tr>
+                <td><strong>Individual</strong></td>
+                <td><code>margin-top: 15px;</code></td>
+                <td>Apenas o topo</td>
+            </tr>
+            <tr>
+                <td><strong>Centralizar</strong></td>
+                <td><code>margin: 0 auto;</code></td>
+                <td>Centraliza horizontalmente</td>
+            </tr>
+        </table>
+
+        <div class="spacing-demo">
+            <div class="spacing-box">Padding: 20px<br>Margin: 15px</div>
+            <div class="spacing-box no-margin">Margin: 0</div>
+            <div class="spacing-box margin-auto" style="display: block; width: 200px;">Margin: auto<br>(centralizado)</div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SEÇÃO 3: BORDAS
+         ============================================ -->
+    <div class="secao">
+        <h2>3. Border - Bordas</h2>
+        
+        <div class="code-example">
+/* Sintaxe completa */<br>
+border: largura estilo cor;<br>
+<br>
+/* Exemplos */<br>
+border: 2px solid black;<br>
+border: 4px dashed red;<br>
+border-top: 3px dotted blue;
+        </div>
+
+        <div class="border-showcase">
+            <div class="border-box border-solid">
+                <strong>solid</strong><br>
+                Linha sólida
+            </div>
+            <div class="border-box border-dashed">
+                <strong>dashed</strong><br>
+                Linha tracejada
+            </div>
+            <div class="border-box border-dotted">
+                <strong>dotted</strong><br>
+                Linha pontilhada
+            </div>
+            <div class="border-box border-double">
+                <strong>double</strong><br>
+                Linha dupla
+            </div>
+            <div class="border-box border-groove">
+                <strong>groove</strong><br>
+                3D entalhado
+            </div>
+            <div class="border-box border-ridge">
+                <strong>ridge</strong><br>
+                3D elevado
+            </div>
+        </div>
+
+        <h3>Bordas Individuais por Lado:</h3>
+        <div class="border-box border-individual" style="margin-top: 20px;">
+            <strong>Bordas diferentes em cada lado!</strong><br>
+            Top: solid red | Right: dashed green<br>
+            Bottom: dotted blue | Left: double purple
+        </div>
+    </div>
+
+    <!-- ============================================
+         SEÇÃO 4: BORDER RADIUS
+         ============================================ -->
+    <div class="secao">
+        <h2>4. Border Radius - Cantos Arredondados</h2>
+        
+        <div class="radius-showcase">
+            <div class="radius-box radius-0">
+                0px<br>
+                (reto)
+            </div>
+            <div class="radius-box radius-10">
+                10px<br>
+                (levemente<br>arredondado)
+            </div>
+            <div class="radius-box radius-25">
+                25px<br>
+                (bem<br>arredondado)
+            </div>
+            <div class="radius-box radius-50">
+                50%<br>
+                (círculo)
+            </div>
+        </div>
+
+        <div class="radius-box radius-custom" style="margin-top: 20px; width: 100%; height: 150px;">
+            <strong>Cantos Individuais!</strong><br>
+            top-left: 50px | top-right: 10px<br>
+            bottom-right: 50px | bottom-left: 10px
+        </div>
+
+        <div class="code-example">
+/* Todos os cantos */<br>
+border-radius: 10px;<br>
+<br>
+/* Cantos específicos */<br>
+border-top-left-radius: 20px;<br>
+border-top-right-radius: 15px;<br>
+<br>
+/* Círculo perfeito */<br>
+border-radius: 50%;
+        </div>
+    </div>
+
+    <!-- ============================================
+         SEÇÃO 5: OUTLINE
+         ============================================ -->
+    <div class="secao">
+        <h2>5. Outline - Contorno Externo</h2>
+        <p>Outline é como uma borda, mas <span class="highlight">NÃO ocupa espaço no layout</span>.</p>
+        
+        <div class="outline-demo">
+            <div class="outline-box with-outline">
+                <strong>Outline sólido</strong><br>
+                outline: 4px solid orange;<br>
+                outline-offset: 5px;
+            </div>
+            <div class="outline-box outline-dashed">
+                <strong>Outline tracejado</strong><br>
+                outline: 4px dashed green;<br>
+                outline-offset: 10px;
+            </div>
+        </div>
+
+        <table>
+            <tr>
+                <th>Aspecto</th>
+                <th>Border</th>
+                <th>Outline</th>
+            </tr>
+            <tr>
+                <td>Ocupa espaço</td>
+                <td>✅ SIM</td>
+                <td>❌ NÃO</td>
+            </tr>
+            <tr>
+                <td>Afeta layout</td>
+                <td>✅ SIM</td>
+                <td>❌ NÃO</td>
+            </tr>
+            <tr>
+                <td>border-radius</td>
+                <td>✅ Aceita</td>
+                <td>❌ NÃO aceita</td>
+            </tr>
+            <tr>
+                <td>Offset (distância)</td>
+                <td>❌ NÃO tem</td>
+                <td>✅ TEM (outline-offset)</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ============================================
+         SEÇÃO 6: BOX SHADOW
+         ============================================ -->
+    <div class="secao">
+        <h2>6. Box Shadow - Sombras em Caixas</h2>
+        
+        <div class="code-example">
+box-shadow: offset-x offset-y blur spread color inset;<br>
+<br>
+/* Exemplos */<br>
+box-shadow: 5px 5px 10px rgba(0,0,0,0.3);<br>
+box-shadow: 0 2px 8px rgba(0,0,0,0.15);<br>
+box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        </div>
+
+        <div class="shadow-showcase">
+            <div class="shadow-box shadow-basic">
+                <strong>Sombra Básica</strong><br>
+                5px 5px 10px
+            </div>
+            <div class="shadow-box shadow-soft">
+                <strong>Sombra Suave</strong><br>
+                0 2px 8px<br>
+                (elevação sutil)
+            </div>
+            <div class="shadow-box shadow-strong">
+                <strong>Sombra Forte</strong><br>
+                0 10px 30px<br>
+                (alta elevação)
+            </div>
+            <div class="shadow-box shadow-inset">
+                <strong>Sombra Interna</strong><br>
+                inset 0 0 20px
+            </div>
+            <div class="shadow-box shadow-colored">
+                <strong>Múltiplas Sombras</strong><br>
+                Coloridas!
+            </div>
+            <div class="shadow-box shadow-hover">
+                <strong>Hover Interativo</strong><br>
+                Passe o mouse!
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SEÇÃO 7: TEXT SHADOW
+         ============================================ -->
+    <div class="secao">
+        <h2>7. Text Shadow - Sombras em Texto</h2>
+        
+        <div class="text-shadow-showcase">
+            <div class="text-demo text-shadow-basic">
+                Sombra Básica
+            </div>
+            <div class="text-demo text-shadow-neon">
+                Efeito Neon
+            </div>
+            <div class="text-demo text-shadow-3d">
+                Efeito 3D
+            </div>
+            <div class="text-demo text-shadow-colorful">
+                Múltiplas Cores
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SEÇÃO 8: OPACITY E RGBA
+         ============================================ -->
+    <div class="secao">
+        <h2>8. Transparência - Opacity e RGBA</h2>
+        
+        <h3>Opacity (afeta TODO o elemento):</h3>
+        <div class="opacity-demo">
+            <div class="opacity-box opacity-100">100%<br>(opaco)</div>
+            <div class="opacity-box opacity-75">75%</div>
+            <div class="opacity-box opacity-50">50%</div>
+            <div class="opacity-box opacity-25">25%</div>
+        </div>
+
+        <h3 style="margin-top: 30px;">RGBA (afeta só a cor):</h3>
+        <div class="rgba-demo">
+            <div class="rgba-box rgba-bg">
+                <strong>rgba(28, 114, 147, 0.5)</strong><br>
+                Background 50% transparente<br>
+                Texto 100% opaco
+            </div>
+            <div class="rgba-box rgba-bg-opaque">
+                <strong>rgba(28, 114, 147, 0.9)</strong><br>
+                Background 90% opaco<br>
+                Texto 100% opaco
+            </div>
+        </div>
+
+        <div class="code-example">
+/* Opacity - afeta tudo */<br>
+opacity: 0.5; /* 50% transparente */<br>
+<br>
+/* RGBA - afeta só a propriedade */<br>
+background: rgba(255, 0, 0, 0.5); /* vermelho 50% */<br>
+color: rgba(0, 0, 0, 0.7); /* preto 70% opaco */
+        </div>
+    </div>
+
+    <!-- ============================================
+         SEÇÃO 9: DISPLAY
+         ============================================ -->
+    <div class="secao">
+        <h2>9. Display - Tipo de Exibição</h2>
+        
+        <h3>display: block</h3>
+        <div class="display-block">Bloco 1 (ocupa linha inteira)</div>
+        <div class="display-block">Bloco 2 (ocupa linha inteira)</div>
+
+        <h3>display: inline</h3>
+        <div>
+            <span class="display-inline">Inline 1</span>
+            <span class="display-inline">Inline 2</span>
+            <span class="display-inline">Inline 3 (mesma linha)</span>
+        </div>
+
+        <h3>display: inline-block</h3>
+        <div>
+            <div class="display-inline-block">Box 1</div>
+            <div class="display-inline-block">Box 2</div>
+            <div class="display-inline-block">Box 3</div>
+        </div>
+
+        <h3>display: flex</h3>
+        <div class="display-flex">
+            <div class="flex-item">Flex 1</div>
+            <div class="flex-item">Flex 2</div>
+            <div class="flex-item">Flex 3</div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SEÇÃO 10: POSITION
+         ============================================ -->
+    <div class="secao">
+        <h2>10. Position - Posicionamento</h2>
+        
+        <div class="position-container">
+            <div class="position-static">
+                <strong>static (padrão)</strong><br>
+                Fluxo normal do documento
+            </div>
+            <div class="position-relative">
+                <strong>relative</strong><br>
+                top: 20px; left: 20px;<br>
+                (relativo à posição original)
+            </div>
+            <div class="position-absolute">
+                <strong>absolute</strong><br>
+                top: 50px; right: 50px;<br>
+                (relativo ao container)
+            </div>
+            <p style="margin: 10px; color: #666;">
+                O container tem <code>position: relative</code> para ser a referência do absolute.
+            </p>
+        </div>
+
+        <div class="code-example">
+/* Relative */<br>
+position: relative;<br>
+top: 20px; left: 20px;<br>
+<br>
+/* Absolute */<br>
+position: absolute;<br>
+top: 50px; right: 50px;<br>
+<br>
+/* Fixed (fixo na viewport) */<br>
+position: fixed;<br>
+bottom: 20px; right: 20px;
+        </div>
+    </div>
+
+    <!-- Botão Fixed -->
+    <div class="position-fixed">
+        ↑ Fixo!
+    </div>
+
+    <div class="secao" style="text-align: center; padding: 40px;">
+        <h2>🎉 Parabéns!</h2>
+        <p>Você explorou todas as principais propriedades CSS de layout, bordas e efeitos visuais!</p>
+        <p><strong>Dica:</strong> Abra o DevTools (F12) e experimente modificar os valores!</p>
+    </div>
+
+</body>
+</html>

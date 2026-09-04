@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Algoritmo de Bresenham</title>
+        <link rel="stylesheet" href="styles.css" />
+        <!-- <style> -->
+        <!--     * { -->
+        <!--         box-sizing: border-box; -->
+        <!--     } -->
+        <!---->
+        <!--     #header-section .title { -->
+        <!--         margin-bottom: 20px; -->
+        <!--     } -->
+        <!---->
+        <!--     #grid { -->
+        <!--         display: flex; -->
+        <!--         flex-direction: column; -->
+        <!--         padding: 10px; -->
+        <!--     } -->
+        <!---->
+        <!--     #questoes { -->
+        <!--         display: grid; -->
+        <!--         grid-template-columns: 400px 400px; -->
+        <!--         column-gap: 30px; -->
+        <!--         margin-bottom: 10px; -->
+        <!--         font-weight: bold; -->
+        <!--     } -->
+        <!---->
+        <!--     #tela2 { -->
+        <!--         padding-left: 30px; -->
+        <!--     } -->
+        <!---->
+        <!--     #canvas { -->
+        <!--         display: flex; -->
+        <!--         flex-direction: row; -->
+        <!--     } -->
+        <!-- </style> -->
+    </head>
+    <body>
+        <div id="header-section">
+            <h1 class="title">
+                Implementação do algoritmo de Bresenham:
+            </h1>
+        </div>
+
+        <div id="grid">
+            <div id="canvas">
+                <canvas id="tela" width="300" height="300"></canvas>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        const canvas = document.getElementById("tela");
+        const ctx = canvas.getContext("2d");
+        // implementação:
+        function bresenham(x1, y1, x2, y2, ctx) {
+            let dx = Math.abs(x2 - x1);
+            let dy = Math.abs(y2 - y1);
+            let sx = (x2 >= x1) ? 1 : -1;
+            let sy = (y2 >= y1) ? 1 : -1;
+            let x = x1, y = y1;
+
+            if (dx >= dy) { //Eixo dominante: X
+                let p = 2 * dy - dx;
+                for (let i = 0; i <= dx; i++) {
+                    ctx.fillRect(x, y, 1, 1);
+                    if (p >= 0) {
+                        y += sy;
+                        p += 2 * (dy - dx);
+                    } else {
+                        p += 2 * dy;
+                    }
+                    x += sx;
+                }
+            } else { //Eixo dominante: Y
+                let p = 2 * dx - dy;
+                for (let i = 0; i <= dy; i++) {
+                    ctx.fillRect(x, y, 1, 1);
+                }
+                if (p >= 0) {
+                    x += sx;
+                    p += 2 * (dx - dy);
+                } else {
+                    p += 2 * dx;
+                }
+                y += sy;
+            }
+        }
+
+        bresenham(300, 0, 0, 300, ctx);
+    </script>
+</html>
