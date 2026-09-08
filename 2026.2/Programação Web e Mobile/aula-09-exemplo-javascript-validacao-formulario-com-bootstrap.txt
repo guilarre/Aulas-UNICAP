@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Contato - Bootstrap 5</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- CSS Customizado -->
+    <link rel="stylesheet" href="aula-09-estilo-bootstrap.css">
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                
+                <!-- Card do Formulário -->
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2 class="mb-0">
+                            <i class="bi bi-envelope-fill me-2"></i>
+                            Formulário de Contato
+                        </h2>
+                        <p class="mb-0 mt-2">Preencha os campos abaixo para entrar em contato</p>
+                    </div>
+                    
+                    <div class="card-body p-4">
+                        <form id="formulario-contato" novalidate>
+                            
+                            <!-- Campo Nome -->
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">
+                                    <i class="bi bi-person-fill text-primary"></i>
+                                    Nome:
+                                </label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="nome" 
+                                    name="nome" 
+                                    placeholder="Digite seu nome completo"
+                                    required>
+                                <div class="invalid-feedback" id="erro-nome">
+                                    O nome é obrigatório.
+                                </div>
+                            </div>
+
+                            <!-- Campo E-mail -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">
+                                    <i class="bi bi-envelope-fill text-primary"></i>
+                                    E-mail:
+                                </label>
+                                <input 
+                                    type="email" 
+                                    class="form-control" 
+                                    id="email" 
+                                    name="email" 
+                                    placeholder="seuemail@exemplo.com"
+                                    required>
+                                <div class="invalid-feedback" id="erro-email">
+                                    Digite um e-mail válido.
+                                </div>
+                            </div>
+
+                            <!-- Campo Assunto -->
+                            <div class="mb-4">
+                                <label for="assunto" class="form-label">
+                                    <i class="bi bi-chat-left-text-fill text-primary"></i>
+                                    Assunto:
+                                </label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="assunto" 
+                                    name="assunto" 
+                                    placeholder="Qual o motivo do contato?"
+                                    required>
+                                <div class="invalid-feedback" id="erro-assunto">
+                                    O assunto é obrigatório.
+                                </div>
+                            </div>
+
+                            <!-- Botões -->
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="button" class="btn btn-secondary" id="btn-limpar">
+                                    <i class="bi bi-x-circle me-1"></i>
+                                    Limpar
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-send-fill me-1"></i>
+                                    Enviar
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Mensagem de Sucesso -->
+                        <div class="alert alert-success mt-4 d-none" id="mensagem-sucesso" role="alert">
+                            <h5 class="alert-heading">
+                                <i class="bi bi-check-circle-fill me-2"></i>
+                                Mensagem enviada com sucesso!
+                            </h5>
+                            <p class="mb-0">Entraremos em contato em breve.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript Customizado -->
+    <script src="aula-09-script.js"></script>
+</body>
+</html>

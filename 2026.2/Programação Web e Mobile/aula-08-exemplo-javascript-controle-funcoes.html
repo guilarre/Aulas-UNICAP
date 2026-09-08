@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Estruturas de Controle e Funções</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #065A82;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #1C7293;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        
+        h2 {
+            color: #1C7293;
+            border-left: 5px solid #065A82;
+            padding-left: 15px;
+            margin: 40px 0 20px 0;
+        }
+        
+        h3 {
+            color: #667eea;
+            margin: 25px 0 10px 0;
+        }
+        
+        .code-block {
+            background: #2C3E50;
+            color: #ECF0F1;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        
+        .demo-box {
+            background: #f0f7ff;
+            border: 2px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .resultado {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+        
+        input[type="number"],
+        input[type="text"],
+        select {
+            padding: 10px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background: #1C7293;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .alert-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript - Estruturas de Controle e Funções</h1>
+        <p class="subtitle">Exemplos Interativos e Práticos</p>
+
+        <!-- SEÇÃO 1: IF/ELSE -->
+        <h2>1. if / else - Decisões</h2>
+        
+        <div class="demo-box">
+            <h3>Verificador de Idade:</h3>
+            <input type="number" id="idade1" placeholder="Sua idade" value="17">
+            <button onclick="verificarIdade()">Verificar</button>
+            <div id="resultado-idade" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="demo-box">
+            <h3>Classificador de Notas:</h3>
+            <input type="number" id="nota" placeholder="Nota (0-100)" value="75" min="0" max="100">
+            <button onclick="classificarNota()">Classificar</button>
+            <div id="resultado-nota" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="code-block">
+// Exemplo if/else
+let idade = 17;
+
+if (idade >= 18) {
+    console.log('Maior de idade');
+} else {
+    console.log('Menor de idade');
+}
+
+// Exemplo if/else if/else
+let nota = 75;
+
+if (nota >= 90) {
+    console.log('A - Excelente!');
+} else if (nota >= 70) {
+    console.log('B - Bom!');
+} else if (nota >= 50) {
+    console.log('C - Regular');
+} else {
+    console.log('Reprovado');
+}
+        </div>
+
+        <!-- SEÇÃO 2: OPERADOR TERNÁRIO E SWITCH -->
+        <h2>2. Operador Ternário e Switch</h2>
+        
+        <div class="demo-box">
+            <h3>Operador Ternário - Status:</h3>
+            <input type="number" id="idade-ternario" placeholder="Idade" value="20">
+            <button onclick="testarTernario()">Testar</button>
+            <div id="resultado-ternario" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="demo-box">
+            <h3>Switch - Dia da Semana:</h3>
+            <select id="dia">
+                <option value="1">1 - Segunda</option>
+                <option value="2">2 - Terça</option>
+                <option value="3">3 - Quarta</option>
+                <option value="4">4 - Quinta</option>
+                <option value="5">5 - Sexta</option>
+                <option value="6">6 - Sábado</option>
+                <option value="7">7 - Domingo</option>
+            </select>
+            <button onclick="verificarDia()">Verificar</button>
+            <div id="resultado-dia" class="resultado" style="display:none;"></div>
+        </div>
+
+        <!-- SEÇÃO 3: FOR LOOP -->
+        <h2>3. Loop for - Repetição com Contador</h2>
+        
+        <div class="demo-box">
+            <h3>Tabuada:</h3>
+            <input type="number" id="num-tabuada" placeholder="Número" value="5" min="1" max="20">
+            <button onclick="gerarTabuada()">Gerar Tabuada</button>
+            <div id="resultado-tabuada" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="demo-box">
+            <h3>Contagem Regressiva:</h3>
+            <input type="number" id="num-contagem" placeholder="Começar de" value="10" min="1" max="50">
+            <button onclick="contagemRegressiva()">Iniciar</button>
+            <div id="resultado-contagem" class="resultado" style="display:none;"></div>
+        </div>
+
+        <!-- SEÇÃO 4: WHILE E DO-WHILE -->
+        <h2>4. Loops while e do-while</h2>
+        
+        <div class="demo-box">
+            <h3>Exemplo While - Soma até N:</h3>
+            <input type="number" id="num-while" placeholder="Somar até" value="5" min="1" max="100">
+            <button onclick="somaAteN()">Calcular</button>
+            <div id="resultado-while" class="resultado" style="display:none;"></div>
+        </div>
+
+        <!-- SEÇÃO 5: FUNÇÕES -->
+        <h2>5. Funções</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Calculadora com Funções:</h3>
+                <input type="number" id="num1-func" placeholder="Número 1" value="10">
+                <input type="number" id="num2-func" placeholder="Número 2" value="5">
+                <br><br>
+                <button onclick="usarSomar()">Somar</button>
+                <button onclick="usarSubtrair()">Subtrair</button>
+                <button onclick="usarMultiplicar()">Multiplicar</button>
+                <button onclick="usarDividir()">Dividir</button>
+                <div id="resultado-func" class="resultado" style="display:none;"></div>
+            </div>
+
+            <div class="card">
+                <h3>Arrow Function - Dobro:</h3>
+                <input type="number" id="num-arrow" placeholder="Número" value="7">
+                <button onclick="calcularDobro()">Calcular Dobro</button>
+                <div id="resultado-arrow" class="resultado" style="display:none;"></div>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 6: EXERCÍCIOS PRÁTICOS -->
+        <h2>6. Exercícios Práticos</h2>
+        
+        <div class="card">
+            <h3>Exercício 1: FizzBuzz</h3>
+            <p>Números de 1 a N. Se divisível por 3: "Fizz", por 5: "Buzz", por ambos: "FizzBuzz"</p>
+            <input type="number" id="num-fizzbuzz" placeholder="Até qual número?" value="15" min="1" max="100">
+            <button onclick="fizzBuzz()">Executar FizzBuzz</button>
+            <div id="resultado-fizzbuzz" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+            <h3>Exercício 2: Números Pares</h3>
+            <p>Mostrar apenas números pares de 1 até N</p>
+            <input type="number" id="num-pares" placeholder="Até qual número?" value="20" min="1" max="100">
+            <button onclick="mostrarPares()">Mostrar Pares</button>
+            <div id="resultado-pares" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+            <h3>Exercício 3: Fatorial</h3>
+            <p>Calcular fatorial de um número (n! = n × (n-1) × (n-2) × ... × 1)</p>
+            <input type="number" id="num-fatorial" placeholder="Número" value="5" min="0" max="15">
+            <button onclick="calcularFatorial()">Calcular Fatorial</button>
+            <div id="resultado-fatorial" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+            <h3>Exercício 4: Primo ou Não</h3>
+            <p>Verificar se um número é primo</p>
+            <input type="number" id="num-primo" placeholder="Número" value="7" min="2" max="1000">
+            <button onclick="verificarPrimo()">Verificar</button>
+            <div id="resultado-primo" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div style="margin-top: 40px; padding: 30px; background: #f0f7ff; border-radius: 10px; text-align: center;">
+            <h2 style="color: #667eea;">🎉 Parabéns!</h2>
+            <p style="font-size: 1.1em; margin: 15px 0;">Você dominou estruturas de controle e funções!</p>
+            <p><strong>Próxima aula:</strong> DOM e Eventos - Manipular HTML com JavaScript</p>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // SEÇÃO 1: IF/ELSE
+        // ========================================
+        function verificarIdade() {
+            const idade = parseInt(document.getElementById('idade1').value);
+            const resultado = document.getElementById('resultado-idade');
+            
+            let mensagem = '';
+            
+            if (idade >= 18) {
+                mensagem = `<strong>Idade: ${idade} anos</strong><br>`;
+                mensagem += `✅ <strong style="color: green;">MAIOR DE IDADE</strong><br>`;
+                mensagem += `Pode votar, dirigir (com habilitação) e assinar contratos.`;
+            } else {
+                mensagem = `<strong>Idade: ${idade} anos</strong><br>`;
+                mensagem += `❌ <strong style="color: red;">MENOR DE IDADE</strong><br>`;
+                mensagem += `Faltam ${18 - idade} ano(s) para atingir a maioridade.`;
+            }
+            
+            resultado.innerHTML = mensagem;
+            resultado.style.display = 'block';
+        }
+
+        function classificarNota() {
+            const nota = parseInt(document.getElementById('nota').value);
+            const resultado = document.getElementById('resultado-nota');
+            
+            let classificacao, mensagem, cor;
+            
+            if (nota >= 90) {
+                classificacao = 'A - Excelente!';
+                mensagem = 'Parabéns! Desempenho excepcional! 🌟';
+                cor = '#2e7d32';
+            } else if (nota >= 70) {
+                classificacao = 'B - Bom!';
+                mensagem = 'Muito bem! Continue assim! 👍';
+                cor = '#1976d2';
+            } else if (nota >= 50) {
+                classificacao = 'C - Regular';
+                mensagem = 'Você passou, mas pode melhorar.';
+                cor = '#f57c00';
+            } else {
+                classificacao = 'D - Reprovado';
+                mensagem = 'Precisa estudar mais para a próxima. 📚';
+                cor = '#c62828';
+            }
+            
+            resultado.innerHTML = `
+                <strong>Nota: ${nota}</strong><br>
+                <strong style="color: ${cor};">${classificacao}</strong><br>
+                ${mensagem}
+            `;
+            resultado.style.display = 'block';
+        }
+
+        // ========================================
+        // SEÇÃO 2: TERNÁRIO E SWITCH
+        // ========================================
+        function testarTernario() {
+            const idade = parseInt(document.getElementById('idade-ternario').value);
+            const resultado = document.getElementById('resultado-ternario');
+            
+            // Usando operador ternário
+            const status = idade >= 18 ? 'adulto' : 'menor';
+            const cor = idade >= 18 ? 'green' : 'red';
+            
+            resultado.innerHTML = `
+                <strong>Idade: ${idade} anos</strong><br>
+                <strong>Operador Ternário:</strong><br>
+                <code>const status = idade >= 18 ? 'adulto' : 'menor';</code><br><br>
+                <strong style="color: ${cor};">Status: ${status}</strong>
+            `;
+            resultado.style.display = 'block';
+        }
+
+        function verificarDia() {
+            const dia = parseInt(document.getElementById('dia').value);
+            const resultado = document.getElementById('resultado-dia');
+            
+            let nomeDia, tipo;
+            
+            switch(dia) {
+                case 1:
+                    nomeDia = 'Segunda-feira';
+                    tipo = 'Dia útil';
+                    break;
+                case 2:
+                    nomeDia = 'Terça-feira';
+                    tipo = 'Dia útil';
+                    break;
+                case 3:
+                    nomeDia = 'Quarta-feira';
+                    tipo = 'Dia útil';
+                    break;
+                case 4:
+                    nomeDia = 'Quinta-feira';
+                    tipo = 'Dia útil';
+                    break;
+                case 5:
+                    nomeDia = 'Sexta-feira';
+                    tipo = 'Dia útil (quase fim de semana! 🎉)';
+                    break;
+                case 6:
+                    nomeDia = 'Sábado';
+                    tipo = 'Fim de semana! 🎊';
+                    break;
+                case 7:
+                    nomeDia = 'Domingo';
+                    tipo = 'Fim de semana! 😴';
+                    break;
+                default:
+                    nomeDia = 'Dia inválido';
+                    tipo = '';
+            }
+            
+            resultado.innerHTML = `
+                <strong>Dia ${dia}: ${nomeDia}</strong><br>
+                ${tipo}
+            `;
+            resultado.style.display = 'block';
+        }
+
+        // ========================================
+        // SEÇÃO 3: FOR LOOP
+        // ========================================
+        function gerarTabuada() {
+            const num = parseInt(document.getElementById('num-tabuada').value);
+            const resultado = document.getElementById('resultado-tabuada');
+            
+            let html = `<strong>Tabuada do ${num}:</strong><br><br>`;
+            
+            for (let i = 1; i <= 10; i++) {
+                html += `${num} × ${i} = <strong>${num * i}</strong><br>`;
+            }
+            
+            resultado.innerHTML = html;
+            resultado.style.display = 'block';
+        }
+
+        function contagemRegressiva() {
+            const num = parseInt(document.getElementById('num-contagem').value);
+            const resultado = document.getElementById('resultado-contagem');
+            
+            let html = '<strong>Contagem Regressiva:</strong><br><br>';
+            
+            for (let i = num; i >= 0; i--) {
+                if (i === 0) {
+                    html += `<strong style="color: red; font-size: 1.5em;">🚀 ZERO!</strong>`;
+                } else {
+                    html += `${i}... `;
+                }
+            }
+            
+            resultado.innerHTML = html;
+            resultado.style.display = 'block';
+        }
+
+        // ========================================
+        // SEÇÃO 4: WHILE
+        // ========================================
+        function somaAteN() {
+            const n = parseInt(document.getElementById('num-while').value);
+            const resultado = document.getElementById('resultado-while');
+            
+            let soma = 0;
+            let contador = 1;
+            let calculo = '';
+            
+            while (contador <= n) {
+                if (contador === 1) {
+                    calculo += contador;
+                } else {
+                    calculo += ` + ${contador}`;
+                }
+                soma += contador;
+                contador++;
+            }
+            
+            resultado.innerHTML = `
+                <strong>Soma de 1 até ${n}:</strong><br><br>
+                ${calculo} = <strong>${soma}</strong><br><br>
+                <code>
+                let soma = 0;<br>
+                let contador = 1;<br>
+                while (contador <= ${n}) {<br>
+                &nbsp;&nbsp;soma += contador;<br>
+                &nbsp;&nbsp;contador++;<br>
+                }
+                </code>
+            `;
+            resultado.style.display = 'block';
+        }
+
+        // ========================================
+        // SEÇÃO 5: FUNÇÕES
+        // ========================================
+        // Funções de calculadora
+        function somar(a, b) {
+            return a + b;
+        }
+
+        function subtrair(a, b) {
+            return a - b;
+        }
+
+        function multiplicar(a, b) {
+            return a * b;
+        }
+
+        function dividir(a, b) {
+            if (b === 0) {
+                return 'Erro: Divisão por zero!';
+            }
+            return a / b;
+        }
+
+        function usarSomar() {
+            const num1 = parseFloat(document.getElementById('num1-func').value);
+            const num2 = parseFloat(document.getElementById('num2-func').value);
+            const resultado = document.getElementById('resultado-func');
+            
+            const res = somar(num1, num2);
+            
+            resultado.innerHTML = `
+                <strong>Função: somar(${num1}, ${num2})</strong><br>
+                Resultado: <strong>${res}</strong>
+            `;
+            resultado.style.display = 'block';
+        }
+
+        function usarSubtrair() {
+            const num1 = parseFloat(document.getElementById('num1-func').value);
+            const num2 = parseFloat(document.getElementById('num2-func').value);
+            const resultado = document.getElementById('resultado-func');
+            
+            const res = subtrair(num1, num2);
+            
+            resultado.innerHTML = `
+                <strong>Função: subtrair(${num1}, ${num2})</strong><br>
+                Resultado: <strong>${res}</strong>
+            `;
+            resultado.style.display = 'block';
+        }
+
+        function usarMultiplicar() {
+            const num1 = parseFloat(document.getElementById('num1-func').value);
+            const num2 = parseFloat(document.getElementById('num2-func').value);
+            const resultado = document.getElementById('resultado-func');
+            
+            const res = multiplicar(num1, num2);
+            
+            resultado.innerHTML = `
+                <strong>Função: multiplicar(${num1}, ${num2})</strong><br>
+                Resultado: <strong>${res}</strong>
+            `;
+            resultado.style.display = 'block';
+        }
+
+        function usarDividir() {
+            const num1 = parseFloat(document.getElementById('num1-func').value);
+            const num2 = parseFloat(document.getElementById('num2-func').value);
+            const resultado = document.getElementById('resultado-func');
+            
+            const res = dividir(num1, num2);
+            
+            resultado.innerHTML = `
+                <strong>Função: dividir(${num1}, ${num2})</strong><br>
+                Resultado: <strong>${res}</strong>
+            `;
+            resultado.style.display = 'block';
+        }
+
+        // Arrow Function
+        const dobro = (x) => x * 2;
+
+        function calcularDobro() {
+            const num = parseFloat(document.getElementById('num-arrow').value);
+            const resultado = document.getElementById('resultado-arrow');
+            
+            const res = dobro(num);
+            
+            resultado.innerHTML = `
+                <strong>Arrow Function:</strong><br>
+                <code>const dobro = (x) => x * 2;</code><br><br>
+                dobro(${num}) = <strong>${res}</strong>
+            `;
+            resultado.style.display = 'block';
+        }
+
+        // ========================================
+        // SEÇÃO 6: EXERCÍCIOS
+        // ========================================
+        function fizzBuzz() {
+            const n = parseInt(document.getElementById('num-fizzbuzz').value);
+            const resultado = document.getElementById('resultado-fizzbuzz');
+            
+            let html = '<strong>FizzBuzz de 1 até ' + n + ':</strong><br><br>';
+            
+            for (let i = 1; i <= n; i++) {
+                if (i % 3 === 0 && i % 5 === 0) {
+                    html += `<span style="color: purple; font-weight: bold;">FizzBuzz</span>, `;
+                } else if (i % 3 === 0) {
+                    html += `<span style="color: blue; font-weight: bold;">Fizz</span>, `;
+                } else if (i % 5 === 0) {
+                    html += `<span style="color: green; font-weight: bold;">Buzz</span>, `;
+                } else {
+                    html += i + ', ';
+                }
+            }
+            
+            resultado.innerHTML = html;
+            resultado.style.display = 'block';
+        }
+
+        function mostrarPares() {
+            const n = parseInt(document.getElementById('num-pares').value);
+            const resultado = document.getElementById('resultado-pares');
+            
+            let html = `<strong>Números pares de 1 até ${n}:</strong><br><br>`;
+            let pares = [];
+            
+            for (let i = 1; i <= n; i++) {
+                if (i % 2 === 0) {
+                    pares.push(i);
+                }
+            }
+            
+            html += pares.join(', ');
+            html += `<br><br><strong>Total: ${pares.length} números pares</strong>`;
+            
+            resultado.innerHTML = html;
+            resultado.style.display = 'block';
+        }
+
+        function calcularFatorial() {
+            const n = parseInt(document.getElementById('num-fatorial').value);
+            const resultado = document.getElementById('resultado-fatorial');
+            
+            let fatorial = 1;
+            let calculo = '';
+            
+            for (let i = n; i >= 1; i--) {
+                fatorial *= i;
+                if (i === n) {
+                    calculo += i;
+                } else {
+                    calculo += ` × ${i}`;
+                }
+            }
+            
+            if (n === 0) {
+                calculo = '1';
+                fatorial = 1;
+            }
+            
+            resultado.innerHTML = `
+                <strong>${n}! (fatorial de ${n}):</strong><br><br>
+                ${calculo} = <strong>${fatorial}</strong>
+            `;
+            resultado.style.display = 'block';
+        }
+
+        function verificarPrimo() {
+            const num = parseInt(document.getElementById('num-primo').value);
+            const resultado = document.getElementById('resultado-primo');
+            
+            function ehPrimo(n) {
+                if (n < 2) return false;
+                for (let i = 2; i <= Math.sqrt(n); i++) {
+                    if (n % i === 0) return false;
+                }
+                return true;
+            }
+            
+            const primo = ehPrimo(num);
+            
+            let html = `<strong>Número: ${num}</strong><br><br>`;
+            
+            if (primo) {
+                html += `✅ <strong style="color: green;">${num} é PRIMO!</strong><br>`;
+                html += `É divisível apenas por 1 e por ${num}.`;
+            } else {
+                html += `❌ <strong style="color: red;">${num} NÃO é primo.</strong><br>`;
+                // Encontrar um divisor
+                for (let i = 2; i < num; i++) {
+                    if (num % i === 0) {
+                        html += `É divisível por ${i} (${num} ÷ ${i} = ${num/i}).`;
+                        break;
+                    }
+                }
+            }
+            
+            resultado.innerHTML = html;
+            resultado.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

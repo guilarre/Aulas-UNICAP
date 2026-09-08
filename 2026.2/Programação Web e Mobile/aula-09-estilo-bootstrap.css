@@ -1,0 +1,104 @@
+/* Estilos customizados para complementar Bootstrap 5 */
+
+/* Fundo gradiente */
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* Card com sombra mais suave */
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Header do card */
+.card-header {
+    padding: 1.5rem;
+    border-bottom: none;
+}
+
+/* Animação de fade in para mensagem de sucesso */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Efeito hover nos botões */
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Inputs com foco */
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25);
+}
+
+/* Label dos campos */
+.form-label {
+    font-weight: 600;
+    color: #495057;
+}
+
+/* Ícones nos labels */
+.form-label i {
+    margin-right: 5px;
+}
+
+/* Responsividade adicional */
+@media (max-width: 768px) {
+    .card-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .card-body {
+        padding: 1.5rem !important;
+    }
+}
+
+/* Estilo SIMPLES para feedback de validação */
+
+/* Campo VÁLIDO - borda verde */
+.was-validated .form-control:valid {
+    border-color: #198754;
+    border-width: 2px;
+}
+
+/* Campo INVÁLIDO - borda vermelha */
+.was-validated .form-control:invalid {
+    border-color: #dc3545;
+    border-width: 2px;
+}
+
+/* Destaque ao focar em campo válido */
+.was-validated .form-control:valid:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+
+/* Destaque ao focar em campo inválido */
+.was-validated .form-control:invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}

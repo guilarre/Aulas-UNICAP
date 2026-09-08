@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Estruturas de Controle e Funções</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript - Estruturas de Controle e Funções</h1>
+        <p class="subtitle">Exemplos Interativos e Práticos</p>
+
+        <!-- SEÇÃO 1: IF/ELSE -->
+        <h2>1. if / else - Decisões</h2>
+        
+        <div class="demo-box">
+            <h3>Verificador de Idade:</h3>
+            <input type="number" id="idade1" placeholder="Sua idade" value="17">
+            <button onclick="verificarIdade()">Verificar</button>
+            <div id="resultado-idade" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="demo-box">
+            <h3>Classificador de Notas:</h3>
+            <input type="number" id="nota" placeholder="Nota (0-100)" value="75" min="0" max="100">
+            <button onclick="classificarNota()">Classificar</button>
+            <div id="resultado-nota" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="code-block">
+// Exemplo if/else
+let idade = 17;
+
+if (idade >= 18) {
+    console.log('Maior de idade');
+} else {
+    console.log('Menor de idade');
+}
+
+// Exemplo if/else if/else
+let nota = 75;
+
+if (nota >= 90) {
+    console.log('A - Excelente!');
+} else if (nota >= 70) {
+    console.log('B - Bom!');
+} else if (nota >= 50) {
+    console.log('C - Regular');
+} else {
+    console.log('Reprovado');
+}
+        </div>
+
+        <!-- SEÇÃO 2: OPERADOR TERNÁRIO E SWITCH -->
+        <h2>2. Operador Ternário e Switch</h2>
+        
+        <div class="demo-box">
+            <h3>Operador Ternário - Status:</h3>
+            <input type="number" id="idade-ternario" placeholder="Idade" value="20">
+            <button onclick="testarTernario()">Testar</button>
+            <div id="resultado-ternario" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="demo-box">
+            <h3>Switch - Dia da Semana:</h3>
+            <select id="dia">
+                <option value="1">1 - Segunda</option>
+                <option value="2">2 - Terça</option>
+                <option value="3">3 - Quarta</option>
+                <option value="4">4 - Quinta</option>
+                <option value="5">5 - Sexta</option>
+                <option value="6">6 - Sábado</option>
+                <option value="7">7 - Domingo</option>
+            </select>
+            <button onclick="verificarDia()">Verificar</button>
+            <div id="resultado-dia" class="resultado" style="display:none;"></div>
+        </div>
+
+        <!-- SEÇÃO 3: FOR LOOP -->
+        <h2>3. Loop for - Repetição com Contador</h2>
+        
+        <div class="demo-box">
+            <h3>Tabuada:</h3>
+            <input type="number" id="num-tabuada" placeholder="Número" value="5" min="1" max="20">
+            <button onclick="gerarTabuada()">Gerar Tabuada</button>
+            <div id="resultado-tabuada" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="demo-box">
+            <h3>Contagem Regressiva:</h3>
+            <input type="number" id="num-contagem" placeholder="Começar de" value="10" min="1" max="50">
+            <button onclick="contagemRegressiva()">Iniciar</button>
+            <div id="resultado-contagem" class="resultado" style="display:none;"></div>
+        </div>
+
+        <!-- SEÇÃO 4: WHILE E DO-WHILE -->
+        <h2>4. Loops while e do-while</h2>
+        
+        <div class="demo-box">
+            <h3>Exemplo While - Soma até N:</h3>
+            <input type="number" id="num-while" placeholder="Somar até" value="5" min="1" max="100">
+            <button onclick="somaAteN()">Calcular</button>
+            <div id="resultado-while" class="resultado" style="display:none;"></div>
+        </div>
+
+        <!-- SEÇÃO 5: FUNÇÕES -->
+        <h2>5. Funções</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Calculadora com Funções:</h3>
+                <input type="number" id="num1-func" placeholder="Número 1" value="10">
+                <input type="number" id="num2-func" placeholder="Número 2" value="5">
+                <br><br>
+                <button onclick="usarSomar()">Somar</button>
+                <button onclick="usarSubtrair()">Subtrair</button>
+                <button onclick="usarMultiplicar()">Multiplicar</button>
+                <button onclick="usarDividir()">Dividir</button>
+                <div id="resultado-func" class="resultado" style="display:none;"></div>
+            </div>
+
+            <div class="card">
+                <h3>Arrow Function - Dobro:</h3>
+                <input type="number" id="num-arrow" placeholder="Número" value="7">
+                <button onclick="calcularDobro()">Calcular Dobro</button>
+                <div id="resultado-arrow" class="resultado" style="display:none;"></div>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 6: EXERCÍCIOS PRÁTICOS -->
+        <h2>6. Exercícios Práticos</h2>
+        
+        <div class="card">
+            <h3>Exercício 1: FizzBuzz</h3>
+            <p>Números de 1 a N. Se divisível por 3: "Fizz", por 5: "Buzz", por ambos: "FizzBuzz"</p>
+            <input type="number" id="num-fizzbuzz" placeholder="Até qual número?" value="15" min="1" max="100">
+            <button onclick="fizzBuzz()">Executar FizzBuzz</button>
+            <div id="resultado-fizzbuzz" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+            <h3>Exercício 2: Números Pares</h3>
+            <p>Mostrar apenas números pares de 1 até N</p>
+            <input type="number" id="num-pares" placeholder="Até qual número?" value="20" min="1" max="100">
+            <button onclick="mostrarPares()">Mostrar Pares</button>
+            <div id="resultado-pares" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+            <h3>Exercício 3: Fatorial</h3>
+            <p>Calcular fatorial de um número (n! = n × (n-1) × (n-2) × ... × 1)</p>
+            <input type="number" id="num-fatorial" placeholder="Número" value="5" min="0" max="15">
+            <button onclick="calcularFatorial()">Calcular Fatorial</button>
+            <div id="resultado-fatorial" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+            <h3>Exercício 4: Primo ou Não</h3>
+            <p>Verificar se um número é primo</p>
+            <input type="number" id="num-primo" placeholder="Número" value="7" min="2" max="1000">
+            <button onclick="verificarPrimo()">Verificar</button>
+            <div id="resultado-primo" class="resultado" style="display:none;"></div>
+        </div>
+
+        <div style="margin-top: 40px; padding: 30px; background: #f0f7ff; border-radius: 10px; text-align: center;">
+            <h2 style="color: #667eea;">🎉 Parabéns!</h2>
+            <p style="font-size: 1.1em; margin: 15px 0;">Você dominou estruturas de controle e funções!</p>
+            <p><strong>Próxima aula:</strong> DOM e Eventos - Manipular HTML com JavaScript</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

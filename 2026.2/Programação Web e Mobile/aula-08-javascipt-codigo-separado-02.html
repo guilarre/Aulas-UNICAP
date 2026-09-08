@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Estruturas de Controle e Funções</title>
+    <link rel="stylesheet" href="styles-v2.css">
+</head>
+<body>
+    <!--
+        VERSÃO 2 - CÓDIGO TOTALMENTE LIMPO
+        ====================================
+        Diferença em relação à versão anterior:
+        - Nenhum atributo "onclick" (JS inline) permanece no HTML.
+        - Nenhum "style" inline foi usado (CSS já estava 100% em styles.css).
+        - Cada botão agora só tem um "id"; a ligação com a função JS
+          é feita em script.js através de addEventListener.
+        - Os pontos alterados estão marcados com comentários
+          "MODIFICADO:" logo acima de cada botão.
+    -->
+    <div class="container">
+        <h1>JavaScript - Estruturas de Controle e Funções</h1>
+        <p class="subtitle">Exemplos Interativos e Práticos</p>
+
+        <!-- SEÇÃO 1: IF/ELSE -->
+        <h2>1. if / else - Decisões</h2>
+        
+        <div class="demo-box">
+            <h3>Verificador de Idade:</h3>
+            <input type="number" id="idade1" placeholder="Sua idade" value="17">
+            <!-- MODIFICADO: onclick="verificarIdade()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-verificar-idade">Verificar</button>
+            <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+            <div id="resultado-idade" class="resultado oculto"></div>
+        </div>
+
+        <div class="demo-box">
+            <h3>Classificador de Notas:</h3>
+            <input type="number" id="nota" placeholder="Nota (0-100)" value="75" min="0" max="100">
+            <!-- MODIFICADO: onclick="classificarNota()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-classificar-nota">Classificar</button>
+            <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+            <div id="resultado-nota" class="resultado oculto"></div>
+        </div>
+
+        <div class="code-block">
+// Exemplo if/else
+let idade = 17;
+
+if (idade >= 18) {
+    console.log('Maior de idade');
+} else {
+    console.log('Menor de idade');
+}
+
+// Exemplo if/else if/else
+let nota = 75;
+
+if (nota >= 90) {
+    console.log('A - Excelente!');
+} else if (nota >= 70) {
+    console.log('B - Bom!');
+} else if (nota >= 50) {
+    console.log('C - Regular');
+} else {
+    console.log('Reprovado');
+}
+        </div>
+
+        <!-- SEÇÃO 2: OPERADOR TERNÁRIO E SWITCH -->
+        <h2>2. Operador Ternário e Switch</h2>
+        
+        <div class="demo-box">
+            <h3>Operador Ternário - Status:</h3>
+            <input type="number" id="idade-ternario" placeholder="Idade" value="20">
+            <!-- MODIFICADO: onclick="testarTernario()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-testar-ternario">Testar</button>
+            <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+            <div id="resultado-ternario" class="resultado oculto"></div>
+        </div>
+
+        <div class="demo-box">
+            <h3>Switch - Dia da Semana:</h3>
+            <select id="dia">
+                <option value="1">1 - Segunda</option>
+                <option value="2">2 - Terça</option>
+                <option value="3">3 - Quarta</option>
+                <option value="4">4 - Quinta</option>
+                <option value="5">5 - Sexta</option>
+                <option value="6">6 - Sábado</option>
+                <option value="7">7 - Domingo</option>
+            </select>
+            <!-- MODIFICADO: onclick="verificarDia()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-verificar-dia">Verificar</button>
+            <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+            <div id="resultado-dia" class="resultado oculto"></div>
+        </div>
+
+        <!-- SEÇÃO 3: FOR LOOP -->
+        <h2>3. Loop for - Repetição com Contador</h2>
+        
+        <div class="demo-box">
+            <h3>Tabuada:</h3>
+            <input type="number" id="num-tabuada" placeholder="Número" value="5" min="1" max="20">
+            <!-- MODIFICADO: onclick="gerarTabuada()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-gerar-tabuada">Gerar Tabuada</button>
+            <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+            <div id="resultado-tabuada" class="resultado oculto"></div>
+        </div>
+
+        <div class="demo-box">
+            <h3>Contagem Regressiva:</h3>
+            <input type="number" id="num-contagem" placeholder="Começar de" value="10" min="1" max="50">
+            <!-- MODIFICADO: onclick="contagemRegressiva()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-contagem-regressiva">Iniciar</button>
+            <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+            <div id="resultado-contagem" class="resultado oculto"></div>
+        </div>
+
+        <!-- SEÇÃO 4: WHILE E DO-WHILE -->
+        <h2>4. Loops while e do-while</h2>
+        
+        <div class="demo-box">
+            <h3>Exemplo While - Soma até N:</h3>
+            <input type="number" id="num-while" placeholder="Somar até" value="5" min="1" max="100">
+            <!-- MODIFICADO: onclick="somaAteN()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-soma-ate-n">Calcular</button>
+            <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+            <div id="resultado-while" class="resultado oculto"></div>
+        </div>
+
+        <!-- SEÇÃO 5: FUNÇÕES -->
+        <h2>5. Funções</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Calculadora com Funções:</h3>
+                <input type="number" id="num1-func" placeholder="Número 1" value="10">
+                <input type="number" id="num2-func" placeholder="Número 2" value="5">
+                <br><br>
+                <!-- MODIFICADO: onclick="usarSomar()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-somar">Somar</button>
+                <!-- MODIFICADO: onclick="usarSubtrair()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-subtrair">Subtrair</button>
+                <!-- MODIFICADO: onclick="usarMultiplicar()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-multiplicar">Multiplicar</button>
+                <!-- MODIFICADO: onclick="usarDividir()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-dividir">Dividir</button>
+                <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+                <div id="resultado-func" class="resultado oculto"></div>
+            </div>
+
+            <div class="card">
+                <h3>Arrow Function - Dobro:</h3>
+                <input type="number" id="num-arrow" placeholder="Número" value="7">
+                <!-- MODIFICADO: onclick="calcularDobro()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-calcular-dobro">Calcular Dobro</button>
+                <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+                <div id="resultado-arrow" class="resultado oculto"></div>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 6: EXERCÍCIOS PRÁTICOS -->
+        <h2>6. Exercícios Práticos</h2>
+        
+        <div class="card">
+            <h3>Exercício 1: FizzBuzz</h3>
+            <p>Números de 1 a N. Se divisível por 3: "Fizz", por 5: "Buzz", por ambos: "FizzBuzz"</p>
+            <input type="number" id="num-fizzbuzz" placeholder="Até qual número?" value="15" min="1" max="100">
+            <!-- MODIFICADO: onclick="fizzBuzz()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-fizzbuzz">Executar FizzBuzz</button>
+            <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+            <div id="resultado-fizzbuzz" class="resultado oculto"></div>
+        </div>
+
+        <!-- MODIFICADO: style="margin-top: 20px;" inline removido; agora usa a classe .card-espacado (definida em styles.css) -->
+        <div class="card card-espacado">
+            <h3>Exercício 2: Números Pares</h3>
+            <p>Mostrar apenas números pares de 1 até N</p>
+            <input type="number" id="num-pares" placeholder="Até qual número?" value="20" min="1" max="100">
+            <!-- MODIFICADO: onclick="mostrarPares()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-mostrar-pares">Mostrar Pares</button>
+            <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+            <div id="resultado-pares" class="resultado oculto"></div>
+        </div>
+
+        <!-- MODIFICADO: style="margin-top: 20px;" inline removido; agora usa a classe .card-espacado (definida em styles.css) -->
+        <div class="card card-espacado">
+            <h3>Exercício 3: Fatorial</h3>
+            <p>Calcular fatorial de um número (n! = n × (n-1) × (n-2) × ... × 1)</p>
+            <input type="number" id="num-fatorial" placeholder="Número" value="5" min="0" max="15">
+            <!-- MODIFICADO: onclick="calcularFatorial()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-calcular-fatorial">Calcular Fatorial</button>
+            <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+            <div id="resultado-fatorial" class="resultado oculto"></div>
+        </div>
+
+        <!-- MODIFICADO: style="margin-top: 20px;" inline removido; agora usa a classe .card-espacado (definida em styles.css) -->
+        <div class="card card-espacado">
+            <h3>Exercício 4: Primo ou Não</h3>
+            <p>Verificar se um número é primo</p>
+            <input type="number" id="num-primo" placeholder="Número" value="7" min="2" max="1000">
+            <!-- MODIFICADO: onclick="verificarPrimo()" removido; evento agora é registrado via addEventListener em script.js -->
+            <button id="btn-verificar-primo">Verificar</button>
+            <!-- MODIFICADO: style="display:none;" inline removido; agora usa a classe .oculto (definida em styles.css) -->
+            <div id="resultado-primo" class="resultado oculto"></div>
+        </div>
+
+        <!-- MODIFICADO: estilos inline (margin-top, padding, background, border-radius, text-align, color, font-size, margin)
+             removidos deste bloco e do h2/p internos; agora usa a classe .banner-final (definida em styles.css) -->
+        <div class="banner-final">
+            <h2>🎉 Parabéns!</h2>
+            <p>Você dominou estruturas de controle e funções!</p>
+            <p><strong>Próxima aula:</strong> DOM e Eventos - Manipular HTML com JavaScript</p>
+        </div>
+    </div>
+    <script src="script-v2.js"></script>
+</body>
+</html>
