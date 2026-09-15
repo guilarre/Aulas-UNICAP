@@ -3,45 +3,157 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Portfolio - Guilherme Larré</title>
+        <title>Portfólio</title>
+        <!-- Ref ao nosso .css -->
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
+        <!-- Seção cabeçalho -->
         <header>
             <div class="container">
-                <h1>Guilherme Larré</h1>
+                <a href="./index.html" title="Voltar à página principal">
+                    <h1>Guilherme Larré</h1>
+                </a>
+
+                <!-- TODO: falta colocar foto -->
                 <div id="picture">
                     <img src="" alt="">
                 </div>
-                <!-- precisa dessa div?? ou só nav -->
-                <div id="navbar">
-                    <nav>
-                        <ul>
-                            <li class="nav-item">
-                                <!-- link pra seção correta -->
-                                <a href=""></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href=""></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href=""></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+
+                <button id="navbar-toggle" type="button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <!-- TODO: fazer botão funcionar e mostrar opções do menu -->
             </div>
         </header>
 
-        <div class="container">
-            <section id="body-section">
-                <div class="container">
+        <!-- Menu com links pras seções -->
+        <nav id="navbar" class="hidden">
+            <ul class="container">
+                <!-- CHECK: precisa dessa classe nav-item? -->
+                <li class="nav-item">
+                    <a href="#sobre-mim">Sobre mim</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#habilidades">Habilidades</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projetos">Projetos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
 
-                </div>
-            </section>
-        </div>
+        <!-- Seção principal -->
+        <main>
+            <div class="container">
+                <section id="sobre-mim">
+                    <h2>Sobre mim</h2>
+                    <p>
+                        Estudante de Ciência da Computação na UNICAP, atualmente em transição de carreira. Comunica-se com proficiência, é curioso e aprende muito rápido.
+                    </p>
+                    <p>
+                        Atualmente trabalhando como bolsista de PIBIC em um projeto de pesquisa em Processamento de Linguagem Natural (PLN) e Técnica (PLT) e Machine Learning.
+                    </p>
+                    <!-- TODO: colocar algum textinho a mais?? -->
+                </section>
+            </div>
 
-        <!-- ref ao script js -->
+            <div class="container">
+                <section id="habilidades">
+                    <h2>Habilidades</h2>
+                    <ul>
+                        <li>
+                            Python, Java, C, C#
+                        </li>
+                        <li>
+                            SQL, SQLite
+                        </li>
+                        <li>
+                            Docker
+                        </li>
+                        <li>
+                            JavaScript, TypeScript, HTML, CSS
+                        </li>
+                        <li>
+                            Svelte, SvelteKit, Tailwind
+                        </li>
+                        <li>
+                            Git/GitHub
+                        </li>
+                        <li>
+                            Linux, Bash Scripts
+                        </li>
+                        <li>
+                            Word, Excel, PowerPoint, LibreOffice
+                        </li>
+                        <li>
+                            UX writing e fundamentos de UX design
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- imagens, descrições de projetos etc -->
+            <div class="container">
+                <section id="projetos">
+                    <h2>Projetos</h2>
+                </section>
+            </div>
+
+            <!-- TODO: formulário de contato -->
+            <div class="container">
+                <section id="contato">
+                    <h2>Contato</h2>
+                </section>
+            </div>
+
+            <!-- Botão pra ir pra próxima seção -->
+            <div class="container" id="arrow-container">
+                <button type="button">
+                    <span id="arrow-icon">&#9660;</span>
+                </button>
+            </div>
+        </main>
+
+        <!-- Seção rodapé -->
+        <footer id="footer">
+            <div class="container">
+                <ul id="social-links">
+                    <li>
+                        <a href="https://wa.me/5581996212351" title="Ir para o Whatsapp">
+                            <img src="./imgs/whatsapp_icon.png" alt="Ícone do Whatsapp">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:guilhermelarre@gmail.com" title="Enviar email">
+                            <img src="./imgs/gmail_icon.webp" alt="Ícone do Gmail">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.github.com/guilarre">
+                            <img src="./imgs/github_icon.png" alt="Ícone do GitHub">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/guilarre">
+                            <img src="./imgs/linkedin_icon.webp" alt="Ícone do LinkedIn">
+                        </a>
+                    </li>
+                </ul>
+
+                <span>
+                    &copy; Guilherme Larré - Todos os direitos reservados - 2026
+                </span>
+            </div>
+        </footer>
+
+        <!-- Ref ao nosso .js -->
         <script src="./js/script.js"></script>
     </body>
 </html>

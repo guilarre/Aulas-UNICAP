@@ -1,0 +1,214 @@
+/* TODO: estilizações pra celular e tablet */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #c6e8f7;
+    font-family: Helvetica;
+    color: #000080;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    max-width: 960px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    padding: 10px 0;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 3px solid #000080;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a {
+    text-decoration: none;
+    color: #000080;
+}
+
+/* TODO: transition between buttons */
+#navbar-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+#navbar-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #000080;
+    border-radius: 2px;
+}
+
+#navbar-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+#navbar-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+#navbar-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* REMOVE: */
+#navbar {
+    padding: 10px 0;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 3px solid #000080;
+    position: fixed;
+    z-index: 2;
+}
+
+#navbar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style: none;
+    font-size: 1.2rem;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: #000080;
+}
+
+.hidden {
+    display: none;
+}
+
+main {
+    /* Pro conteúdo não ficar bloqueado pelo footer fixo embaixo */
+    padding-bottom: 80px;
+}
+
+main .container {
+    padding-top: 0px;
+}
+
+section {
+    /* Pra centralizar verticalmente */
+    height: calc(100vh - 135px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Deixa alinhado à esq */
+    align-items: flex-start;
+}
+
+section h2 {
+    padding-bottom: 30px;
+    font-size: 1.75rem;
+}
+
+section p {
+    padding-bottom: 10px;
+    font-size: 1.125rem;
+}
+
+section ul {
+    list-style: none;
+}
+
+section ul li {
+    padding-bottom: 6px;
+    font-size: 1.125rem;
+}
+
+#arrow-container {
+    position: fixed;
+    bottom: 80px;
+    right: max(1.5rem, calc((100vw - 960px) / 2 + 1.5rem));
+    left: auto;
+    width: auto;
+    /* Pra ficar acima de tudo */
+    z-index: 3;
+}
+
+#arrow-container button {
+    background-color: #fff;
+    border: 2px solid #000080;
+    border-radius: 50%;
+    padding: 2px;
+    cursor: pointer;
+    font-size: 2rem;
+    color: #000080;
+    transition: transform 0.2s;
+}
+
+#arrow-container button:hover {
+    transform: scale(1.2);
+}
+
+#arrow-container span {
+    padding: 2px;
+}
+
+@media (max-width: 960px) {
+    #arrow-container {
+        left: auto;
+        right: 1.5rem;
+        transform: none;
+    }
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 3px solid #000080;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#social-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#social-links img {
+    display: block;
+    height: 25px;
+}
