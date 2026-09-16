@@ -1,4 +1,4 @@
-/* TODO: estilizações pra celular e tablet */
+/* TODO: modo escuro */
 
 * {
     box-sizing: border-box;
@@ -6,30 +6,23 @@
     padding: 0;
 }
 
-html, body {
-    scroll-behavior: smooth;
-}
-
 body {
-    background-color: #c6e8f7;
+    background-color: #CAD6BE;
     font-family: Helvetica;
-    color: #000080;
+    color: #482f2e;
 }
 
 .container {
     margin: 0 auto;
     padding: 0 1.5rem;
-    max-width: 960px;
     width: 100%;
-    justify-content: center;
-    align-items: center;
 }
 
 header {
     padding: 10px 0;
     width: 100%;
-    background-color: #fff;
-    border-bottom: 3px solid #000080;
+    background-color: #bed6d6;
+    border-bottom: 3px solid #482f2e;
     position: sticky;
     top: 0;
     left: 0;
@@ -44,10 +37,91 @@ header .container {
 
 header a {
     text-decoration: none;
-    color: #000080;
+    color: #482f2e;
 }
 
-/* TODO: transition between buttons */
+header a h1 {
+    font-size: 1.6rem;
+}
+
+/* desktop */
+@media screen and (min-width: 769px) {
+    header a h1 {
+        font-size: 2rem;
+    }
+}
+
+/* NOTE: navbar */
+
+/* mobile */
+#navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    background-color: #bed6d6;
+    border-bottom: 3px solid #482f2e;
+    border-top: 3px solid #482f2e;
+
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+}
+
+#navbar.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#navbar ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 15px;
+    list-style: none;
+    font-size: 1rem;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: #482f2e;
+    font-weight: 500;
+}
+
+/* tablet */
+@media screen and (min-width: 600px) {
+    #navbar {
+        opacity: 1;
+    }
+
+    #navbar ul {
+        flex-direction: row;
+    }
+}
+
+/* desktop */
+@media screen and (min-width: 769px) {
+    #navbar {
+        position: static;
+        width: auto;
+        padding: 0;
+        opacity: 1;
+        border: none;
+        background: transparent;
+        visibility: visible;
+        transform: none;
+    }
+
+    #navbar ul {
+        gap: 25px;
+    }
+}
+
+/* NOTE: botão hamburguer p navbar */
 #navbar-toggle {
     display: flex;
     flex-direction: column;
@@ -65,8 +139,9 @@ header a {
     display: block;
     width: 100%;
     height: 3px;
-    background-color: #000080;
+    background-color: #482f2e;
     border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
 #navbar-toggle.active span:nth-child(1) {
@@ -81,45 +156,118 @@ header a {
     transform: translateY(-9px) rotate(-45deg);
 }
 
-/* REMOVE: */
-#navbar {
-    padding: 10px 0;
-    width: 100%;
-    background-color: #fff;
-    border-bottom: 3px solid #000080;
-    position: fixed;
-    z-index: 2;
+/* desktop */
+@media screen and (min-width: 769px) {
+    #navbar-toggle {
+        display: none;
+    }
 }
 
-#navbar ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    list-style: none;
-    font-size: 1.2rem;
-}
-
-#navbar a {
-    text-decoration: none;
-    color: #000080;
-}
-
-.hidden {
-    display: none;
-}
+/* NOTE: main geral */
 
 main {
-    /* Pro conteúdo não ficar bloqueado pelo footer fixo embaixo */
-    padding-bottom: 80px;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 120px);
+    padding: 40px 0;
 }
 
-main .container {
-    padding-top: 0px;
+/* NOTE: imagem em index.html */
+#picture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
 }
+
+#picture img {
+    height: 250px;
+    object-fit: cover; /* pra evitar distorções */
+    border-radius: 50%;
+    border: 0.1rem solid #482f2e;
+}
+
+/* NOTE: texto geral */
+
+#texto-inicio {
+    text-align: center;
+}
+
+#texto-inicio h2 {
+    font-size: 1.75rem;
+}
+
+#texto-inicio p {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 1.125rem;
+}
+
+/* botão pra prox página */
+#link-container {
+    display: flex;
+    justify-content: center;
+}
+
+#link-container a {
+    display: inline-block;
+    text-align: center;
+    border: solid 2px #482f2e;
+    border-radius: 3px;
+    background-color: #bed6d6;
+    padding: 6px 8px 4px 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #482f2e;
+}
+
+/* desktop */
+@media screen and (min-width: 769px) {
+    #picture img {
+        height: 300px;
+    }
+
+    #link-container a {
+        transition: 0.2s all ease;
+    }
+
+    #link-container a:hover {
+        background-color: #CCE6E6;
+    }
+}
+
+/* tablet e desktop */
+@media screen and (min-width: 600px) {
+    #picture {
+        flex-direction: row;
+    }
+
+    #texto-inicio {
+        max-width: 500px;
+        width: 100%;
+        margin-left: 50px;
+    }
+
+    #texto-inicio h2, p {
+        text-align: left;
+    }
+
+    #texto-inicio a {
+        font-size: 1.125rem;
+    }
+
+    #link-container {
+        justify-content: flex-start;
+    }
+}
+
+/* NOTE: sections em geral */
 
 section {
     /* Pra centralizar verticalmente */
-    height: calc(100vh - 135px);
+    /* CHECK: esse valor vai mudar */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -129,12 +277,12 @@ section {
 
 section h2 {
     padding-bottom: 30px;
-    font-size: 1.75rem;
+    font-size: 1.6rem;
 }
 
 section p {
-    padding-bottom: 10px;
-    font-size: 1.125rem;
+    padding-bottom: 30px;
+    font-size: 1rem;
 }
 
 section ul {
@@ -143,45 +291,82 @@ section ul {
 
 section ul li {
     padding-bottom: 6px;
-    font-size: 1.125rem;
+    font-size: 1rem;
 }
 
-#arrow-container {
-    position: fixed;
-    bottom: 80px;
-    right: max(1.5rem, calc((100vw - 960px) / 2 + 1.5rem));
-    left: auto;
-    width: auto;
-    /* Pra ficar acima de tudo */
-    z-index: 3;
-}
-
-#arrow-container button {
-    background-color: #fff;
-    border: 2px solid #000080;
-    border-radius: 50%;
-    padding: 2px;
-    cursor: pointer;
-    font-size: 2rem;
-    color: #000080;
-    transition: transform 0.2s;
-}
-
-#arrow-container button:hover {
-    transform: scale(1.2);
-}
-
-#arrow-container span {
-    padding: 2px;
-}
-
-@media (max-width: 960px) {
-    #arrow-container {
-        left: auto;
-        right: 1.5rem;
-        transform: none;
+/* tablet e desktop */
+@media screen and (min-width: 600px) {
+    section ul li {
+        font-size: 1.125rem;
     }
 }
+
+/* NOTE: habilidades */
+
+#habilidades {
+    width: 100%;
+}
+
+#habilidades ul {
+    display: grid;
+    /* 2 cols de tam igual */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+    width: 100%;
+    list-style: none;
+    padding-bottom: 60px;
+}
+
+#habilidades li {
+    display: flex;
+    /* nome abaixo do ícone */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.33);
+    border: 1px solid #482f2e;
+    border-radius: 6px;
+}
+
+#habilidades .icon-wrapper {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+#habilidades img {
+    max-width: 100%;
+    max-height: 100%;
+    /* Mantém a proporção do ícone sem distorcer */
+    object-fit: contain;
+}
+
+#habilidades span {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* tablet */
+@media screen and (min-width: 600px) {
+    #habilidades ul {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* desktop */
+@media screen and (min-width: 769px) {
+    #habilidades ul {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+/* NOTE: footer geral */
 
 footer {
     position: fixed;
@@ -190,8 +375,8 @@ footer {
     z-index: 2;
     padding: 10px 0;
     width: 100%;
-    background-color: #fff;
-    border-top: 3px solid #000080;
+    background-color: #bed6d6;
+    border-top: 3px solid #482f2e;
 }
 
 footer .container {
@@ -199,6 +384,7 @@ footer .container {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    gap: 1.2rem;
 }
 
 #social-links {
@@ -211,4 +397,24 @@ footer .container {
 #social-links img {
     display: block;
     height: 25px;
+    border-radius: 3px;
+}
+
+footer span {
+    text-align: right;
+    font-size: 0.7rem;
+}
+
+/* tablet */
+@media screen and (min-width: 600px) {
+    footer span {
+        font-size: 0.9rem;
+    }
+}
+
+/* desktop */
+@media screen and (min-width: 769px) {
+    footer span {
+        font-size: 1rem;
+    }
 }
