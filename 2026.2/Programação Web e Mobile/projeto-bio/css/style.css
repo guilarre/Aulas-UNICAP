@@ -302,6 +302,15 @@ section ul li {
     }
 }
 
+/* NOTE: seção sobre mim */
+
+/* desktop */
+@media screen and (min-width: 768px) {
+    #sobre-mim h2 {
+        font-size: 2rem;
+    }
+}
+
 /* NOTE: seção habilidades */
 
 #habilidades {
@@ -427,6 +436,49 @@ section ul li {
     #projetos-wrapper {
         grid-template-columns: 1fr 1fr 1fr;
     }
+}
+
+/* NOTE: contato */
+
+#contato form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: flex-start;
+    padding-bottom: 60px;
+}
+
+#contato form label {
+    padding-top: 6px;
+}
+
+#contato form input {
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+}
+
+#contato form select {
+    padding: 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+}
+
+#contato form select:invalid {
+    color: rgba(0, 0, 0, 0.4)
+}
+
+#contato form 
+
+#contato form textarea {
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+}
+
+#submit-button {
+    padding: 4px;
+    margin-top: 4px;
 }
 
 /* NOTE: footer geral */

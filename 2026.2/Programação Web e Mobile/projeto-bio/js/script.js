@@ -6,3 +6,11 @@ menuButton.addEventListener('click', () => {
     navbarMenu.classList.toggle('active');
     menuButton.classList.toggle('active');
 });
+
+//TODO: validação do form
+
+
+
+//TODO: previnir default do submit
+
+
