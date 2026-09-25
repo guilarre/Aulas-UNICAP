@@ -397,6 +397,19 @@ section ul li {
 
 /* NOTE: seção projetos */
 
+#projetos-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 1.5rem;
+}
+
+#projetos h2 {
+    padding-bottom: 0;
+}
+
 #projetos-wrapper {
     display: grid;
     grid-template-columns: 1fr;
@@ -405,7 +418,6 @@ section ul li {
     padding-bottom: 60px;
 }
 
-/* TODO: adicionar animação e mudança de cor */
 .projeto-card {
     position: relative;
     background-color: rgba(255, 255, 255, 0.3);
@@ -413,6 +425,11 @@ section ul li {
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: 6px 5px 6px rgba(0, 0, 0, 0.3);
+    transition: ease 0.2s all;
+}
+
+.projeto-card:hover {
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .projeto-card img {
