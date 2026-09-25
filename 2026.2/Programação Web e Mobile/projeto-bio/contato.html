@@ -39,19 +39,18 @@
                 <section id="contato">
                     <h2>Contato</h2>
                     <form>
-                        <input type="text" name="nome" placeholder="Digite seu nome" required>
-                        <input type="email" name="email" placeholder="Digite um e-mail válido" required>
+                        <input id="nome" type="text" name="nome" placeholder="Digite seu nome" required>
+                        <input id="email" type="email" name="email" placeholder="Digite um e-mail válido" required>
                         <select id="assunto" name="assunto" placeholder="Escolha um assunto" required>
-                            <!-- CHECK: usage of id -->
-                            <option value="" disabled selected hidden>-- Selecione uma opção --</option>
+                            <option value="" disabled selected hidden>-- Selecione um assunto --</option>
                             <option class="valid-opt">Dúvida</option>
                             <option class="valid-opt">Sugestão</option>
                             <option class="valid-opt">Reclamação</option>
                             <option class="valid-opt">Elogio</option>
                             <option class="valid-opt">Outro</option>
                         </select>
-                        <!-- TODO: max length da mensagem -->
-                        <textarea rows="10" cols="90" placeholder="Digite sua mensagem" required></textarea>
+                        <textarea id="mensagem" rows="10" cols="90" placeholder="Digite sua mensagem" maxlength="5000" required></textarea>
+                        <span id="char-count">0/5000 caracteres</span>
                         <button type="submit" id="submit-button">Enviar mensagem</button>
                     </form>
                 </section>
@@ -91,6 +90,6 @@
         </footer>
 
         <!-- Ref ao nosso .js -->
-        <script src="./js/script.js"></script>
+        <script src="./js/script.js" defer></script>
     </body>
 </html>

@@ -446,6 +446,7 @@ section ul li {
     gap: 1rem;
     justify-content: flex-start;
     padding-bottom: 60px;
+    width: 100%;
 }
 
 #contato form label {
@@ -455,30 +456,68 @@ section ul li {
 #contato form input {
     padding: 8px;
     background-color: rgba(255, 255, 255, 0.8);
-    border: none;
+    border: solid 1px #482f2e;
+    color: #482f2e;
+}
+
+#contato form input.erro {
+    border: solid 2px #dc3545;
 }
 
 #contato form select {
     padding: 4px;
     background-color: rgba(255, 255, 255, 0.8);
-    border: none;
+    border: solid 1px #482f2e;
+    color: #482f2e;
+}
+
+#contato form select.erro {
+    border: solid 2px #dc3545;
 }
 
 #contato form select:invalid {
     color: rgba(0, 0, 0, 0.4)
 }
 
-#contato form 
-
 #contato form textarea {
     padding: 8px;
     background-color: rgba(255, 255, 255, 0.8);
-    border: none;
+    border: solid 1px #482f2e;
+    font-family: Helvetica;
+    font-size: 0.875rem;
+    color: #482f2e;
+}
+
+#contato form textarea.erro {
+    border: solid 2px #dc3545;
 }
 
 #submit-button {
     padding: 4px;
     margin-top: 4px;
+    background-color: #f4f7f2;
+    color: #482f2e;
+    border: solid 1px #482f2e;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: ease 0.2s;
+}
+
+#char-count {
+    font-size: 0.8rem;
+}
+
+/* desktop */
+@media screen and (min-width: 769px) {
+    #submit-button:hover {
+        background-color: rgba(204, 230, 230, 0.5);
+    }
+
+    /* #contato { */
+    /*     display: flex; */
+    /*     align-items: flex-start; */
+    /*     max-width: 100%; */
+    /* } */
 }
 
 /* NOTE: footer geral */
