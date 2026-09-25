@@ -132,6 +132,18 @@ if (formInputs) {
             e.target.classList.remove('erro');
             e.target.setCustomValidity("");
         });
+
+        input.addEventListener('invalid', (e) => {
+            e.preventDefault(); // impede a mensagem nativa em inglês
+
+            if (e.target.validity.valueMissing) {
+                e.target.setCustomValidity('Por favor, preencha este campo.');
+            } else if (e.target.validity.typeMismatch || e.target.validity.patternMismatch) {
+                e.target.setCustomValidity('Por favor, insira um formato válido.');
+            }
+
+            e.target.reportValidity();
+        });
     });
 }
 

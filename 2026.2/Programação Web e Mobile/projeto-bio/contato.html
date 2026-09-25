@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,9 +38,9 @@
             <div class="container">
                 <section id="contato">
                     <h2>Contato</h2>
-                    <form>
+                    <form novalidate>
                         <input id="nome" type="text" name="nome" placeholder="Digite seu nome" required>
-                        <input id="email" type="email" name="email" placeholder="Digite um e-mail válido" required>
+                        <input id="email" type="text" name="email" placeholder="Digite um e-mail válido" required>
                         <select id="assunto" name="assunto" placeholder="Escolha um assunto" required>
                             <option value="" disabled selected hidden>-- Selecione um assunto --</option>
                             <option class="valid-opt">Dúvida</option>
@@ -49,7 +49,7 @@
                             <option class="valid-opt">Elogio</option>
                             <option class="valid-opt">Outro</option>
                         </select>
-                        <textarea id="mensagem" rows="10" cols="90" placeholder="Digite sua mensagem" maxlength="5000" required></textarea>
+                        <textarea id="mensagem" rows="8" cols="90" placeholder="Digite sua mensagem" maxlength="5000" required></textarea>
                         <span id="char-count">0/5000 caracteres</span>
                         <button type="submit" id="submit-button">Enviar mensagem</button>
                     </form>

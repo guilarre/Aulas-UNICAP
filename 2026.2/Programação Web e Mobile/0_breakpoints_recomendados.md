@@ -8,3 +8,4 @@
 | Desktops | 1025px - 1440px | Monitores padrão de desktop e laptops comuns (13" a 15"). |
 | Telas Grandes (TVs/Ultrawide) | > 1440px | Monitores QHD/4K, Ultrawides. |
 
+
