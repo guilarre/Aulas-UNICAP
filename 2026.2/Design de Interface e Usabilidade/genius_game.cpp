@@ -4,10 +4,28 @@
 #include <sys/types.h>
 // NOTE: n sei se precisa...
 // #include <Arduino.h>
+#include <LiquidCrystal.h>
 
 #define MAX_LEDS 4
 #define MAX_PLAYERS 4
 #define MAX_SEQUENCIA 10
+
+// NOTE: instanciação das nossas const globais
+const uint8_t PINOS_LEDS[MAX_LEDS] = {13, 12, 11, 10};
+const uint8_t PINOS_BOTOES[MAX_LEDS] = {9, 8, 7, 6};
+const uint8_t PINO_BOTAO_MENU = 5;
+const uint8_t PINO_BOTAO_ON_OFF = 4;
+// pinos do lcd
+const uint8_t PIN_LCD_RS = 2;
+const uint8_t PIN_LCD_EN = 3;
+const uint8_t PIN_LCD_D4 = A0;
+const uint8_t PIN_LCD_D5 = A1;
+const uint8_t PIN_LCD_D6 = A2;
+const uint8_t PIN_LCD_D7 = A3;
+
+LiquidCrystal lcd(PIN_LCD_RS, PIN_LCD_EN, PIN_LCD_D4, PIN_LCD_D5, PIN_LCD_D6, PIN_LCD_D7);
+
+const int delayTime = 200;
 
 // NOTE: lógica da sequência de cores
 // uint8_t (1 byte), em vez de int (2 ou 4 bytes)
@@ -66,6 +84,8 @@ class Player {
         }
 };
 
+// NOTE: lógica do jogo
+// NOTE: instanciação dos jogadores
 // cria os 4 jogadores na memória
 Player playerList[MAX_PLAYERS];
 // ponteiro pro player atual
@@ -87,6 +107,7 @@ void pontuarPlayer(uint8_t pontos) {
     playerList[playerAtual].score += pontos;
 }
 
+// NOTE: instanciação das sequências
 // variável global pra guardar sequência
 filaCor sequenciaAtualGlobal;
 // variável global da jogada atual (vai ser resetada a cada tentativa correta)
@@ -112,14 +133,6 @@ bool verificarJogada(filaCor jogadaAtual) {
     }
     return true;
 }
-
-// NOTE: instanciação dos nossos objetos
-const uint8_t pinosLeds[] = {13, 12, 11, 10};
-const uint8_t pinosBotoes[] = {9, 8, 7, 6};
-const uint8_t pinoBotaoMenu = 5;
-const uint8_t pinoBotaoOnOff = 4;
-
-const int delayTime = 200;
 
 // TODO: falta funções do menu
 // TODO: menu inicial, pegando qtd de jogadores desejada e
@@ -157,12 +170,17 @@ void mostrarSequenciaGlobal() {
 void setup() {
     // aqui realizamos o setup desejado pros pinos do arduino
     for (int i = 0; i < MAX_LEDS; i++) {
-        pinMode(pinosLeds[i], OUTPUT);
-        pinMode(pinosBotoes[i], INPUT);
+        pinMode(PINOS_LEDS[i], OUTPUT);
+        pinMode(PINOS_BOTOES[i], INPUT);
     }
-    pinMode(pinoBotaoMenu, INPUT);
 
-    // leitura analógica de um pino desconectado pra + aleatoriedade
+    // TEST: ver se INPUT_PULLUP dá certo atualmente no circuito
+    pinMode(PINO_BOTAO_MENU, INPUT_PULLUP);
+    pinMode(PINO_BOTAO_ON_OFF, INPUT_PULLUP);
+
+    lcd.begin(16, 2);
+
+    // leitura analógica de um pino desconectado como seed
     randomSeed(analogRead(2));
 }
 
@@ -172,7 +190,7 @@ void loop() {
     // TEST:
     if (primeiraRodada)
         menu_setup();
-    uint8_t estadoBotaoMenu = digitalRead(pinoBotaoMenu);
+    uint8_t estadoBotaoMenu = digitalRead(PINO_BOTAO_MENU);
     if (estadoBotaoMenu == 1) {
         menu_pausa();
     }
@@ -194,7 +212,7 @@ void loop() {
     uint8_t estadoBotoes[MAX_LEDS] = {0}; //inicia tudo em LOW (0)
 
     for (int i = 0; i < MAX_LEDS; i++) {
-        uint8_t estadoBotaoAtual = digitalRead(pinosBotoes[i]);
+        uint8_t estadoBotaoAtual = digitalRead(PINOS_BOTOES[i]);
         if (estadoBotaoAtual == 1) {
             jogadaAtual.enqueue(static_cast<Color>(i));
             if (jogadaAtual.qtd == sequenciaAtualGlobal.qtd) {
