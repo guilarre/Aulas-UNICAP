@@ -10,7 +10,7 @@
 #define MAX_PLAYERS 4
 #define MAX_SEQUENCIA 10
 
-// NOTE: instanciação das nossas const globais
+// NOTE: const globais
 const uint8_t PINOS_LEDS[MAX_LEDS] = {13, 12, 11, 10};
 const uint8_t PINOS_BOTOES[MAX_LEDS] = {9, 8, 7, 6};
 const uint8_t PINO_BOTAO_MENU = 5;
@@ -22,10 +22,20 @@ const uint8_t PIN_LCD_D4 = A0;
 const uint8_t PIN_LCD_D5 = A1;
 const uint8_t PIN_LCD_D6 = A2;
 const uint8_t PIN_LCD_D7 = A3;
+// constantes de tempo
+const uint16_t TEMPO_DEBOUNCE = 50; //50ms pra como filtro pra ruidos
+const uint16_t TEMPO_CLIQUE_DUPLO = 300; // CHECK: ver se vai usar msm
+const uint16_t TEMPO_CLIQUE_LONGO = 1000;
 
+// NOTE: inicialização do display
 LiquidCrystal lcd(PIN_LCD_RS, PIN_LCD_EN, PIN_LCD_D4, PIN_LCD_D5, PIN_LCD_D6, PIN_LCD_D7);
 
-const int delayTime = 200;
+uint8_t ultimoEstadoBotao = HIGH; //HIGH por conta do INPUT_PULLUP
+unsigned long tempoUltimaMudanca = 0;
+unsigned long tempoPressionado = 0;
+unsigned long tempoLiberado = 0;
+uint8_t contagemCliques = 0;
+bool cliqueLongoProcessado = false;
 
 // NOTE: lógica da sequência de cores
 // uint8_t (1 byte), em vez de int (2 ou 4 bytes)
@@ -94,7 +104,7 @@ uint8_t playerAtual = 0;
 uint8_t totalPlayers = 1;
 // função pra ir pro próx player
 void proxPlayer() {
-    uint8_t proxPlayer;
+    uint8_t proxPlayer; //ponteiro em playerList
 
     do {
         proxPlayer = (playerAtual + 1) % totalPlayers;
@@ -107,7 +117,7 @@ void pontuarPlayer(uint8_t pontos) {
     playerList[playerAtual].score += pontos;
 }
 
-// NOTE: instanciação das sequências
+// NOTE: sequência de cores
 // variável global pra guardar sequência
 filaCor sequenciaAtualGlobal;
 // variável global da jogada atual (vai ser resetada a cada tentativa correta)
@@ -134,20 +144,23 @@ bool verificarJogada(filaCor jogadaAtual) {
     return true;
 }
 
-// TODO: falta funções do menu
-// TODO: menu inicial, pegando qtd de jogadores desejada e
+// NOTE: menus
+// menu setup: pegar qtd de jogadores desejada e setar globalmente (totalPlayers)
 bool primeiraRodada = true;
 
-// TODO:
+// CHECK: essa lib String tá funcionando? é ideal? melhor usar char*?
 void menu_setup() {
     primeiraRodada = false;
-    // CHECK: essa lib String tá funcionando? é ideal ou melhor
-    // usando char*? seria assim:
-    // char promptInicial[] = "Escolha a qtd de jogadores...";
     String promptInicial = "Escolha a qtd de jogadores...";
     // TODO: logica de mostrar no display corretamente
     // printar o menu, solicitar totalPlayers...
     // totalPlayers = ;
+    String prompt1P = "1 jogadores";
+    String prompt2P = "2 jogadores";
+    String prompt3P = "3 jogadores";
+    String prompt4P = "4 jogadores";
+    
+
 }
 
 // TODO: menu pausa (mostrar que está em pausa e deixar opções pra mostrar ranking, score, terminar jogo, resetar...)
@@ -161,6 +174,7 @@ String vezPlayer2 = "-- Player 2 --";
 String vezPlayer3 = "-- Player 3 --";
 String vezPlayer4 = "-- Player 4 --";
 
+// TODO:
 void mostrarSequenciaGlobal() {
     
 }
@@ -182,6 +196,7 @@ void setup() {
 
     // leitura analógica de um pino desconectado como seed
     randomSeed(analogRead(2));
+    Serial.begin(9600); // REMOVE: pra teste apenas
 }
 
 // NOTE: loop contínuo do jogo
