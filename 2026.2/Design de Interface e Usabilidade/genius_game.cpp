@@ -1,18 +1,32 @@
-// TEST: checar uso de char*
-// CHECK: ver quais realmente sao necessarios pro tinkercad
-#include <cstdint>
+// TODO: pensar como será sistema de pontuação
+// TODO: pensar no feedback ao user -> luz, som, ...?
+// TODO: persistência na memória pra guardar highscore
+// TODO: pesquisar em como deixar a mensagem persistir na tela se chamada dentro de loop()
+// TEST: checar usos de char*
+
+#include <stdint.h> // REMOVE:
 #include <stdlib.h>
-#include <sys/types.h>
-// NOTE: n sei se precisa...
-// #include <Arduino.h>
+#include <sys/types.h> // CHECK:
 #include <LiquidCrystal.h>
+#include <avr/pgmspace.h>
 
 #define MAX_LEDS 4
 #define MAX_PLAYERS 4
 #define MAX_SEQUENCIA 10
 #define PONTO_POR_JOGADA 100
+#define STRING_BUFFER_SIZE 100
+
+// NOTE: lógica da sequência de cores
+// uint8_t (1 byte), em vez de int (2 ou 4 bytes)
+enum Color : uint8_t {
+    VERDE = 0,
+    VERMELHO = 1,
+    AZUL = 2,
+    AMARELO = 3
+};
 
 // NOTE: const globais
+// FIX: vai precisar ser usando PROGMEM e 
 // ref de strings pras cores
 const char *colorToString[] = {"VERDE", "VERMELHO", "AZUL", "AMARELO"};
 // pinos leds e botões
@@ -31,6 +45,8 @@ const uint8_t PIN_LCD_D7 = A3;
 const uint16_t TEMPO_DEBOUNCE = 50; //50ms pra como filtro pra ruidos
 const uint16_t TEMPO_CLIQUE_DUPLO = 300; // CHECK: ver se vai usar msm
 const uint16_t TEMPO_CLIQUE_LONGO = 1000;
+// buffer pro display
+const char* stringBuffer = new char[STRING_BUFFER_SIZE];
 
 // NOTE: inicialização do display
 LiquidCrystal lcd(PIN_LCD_RS, PIN_LCD_EN, PIN_LCD_D4, PIN_LCD_D5, PIN_LCD_D6, PIN_LCD_D7);
@@ -43,21 +59,12 @@ unsigned long tempoLiberado = 0;
 uint8_t contagemCliques = 0;
 bool cliqueLongoProcessado = false;
 
-// strings para menus
+// REMOVE: strings para menus
 const char promptInicial[] = "Escolha a qtd de jogadores...";
 const char opcaoSetup1[] = "1 jogadores";
 const char opcaoSetup2[] = "2 jogadores";
 const char opcaoSetup3[] = "3 jogadores";
 const char opcaoSetup4[] = "4 jogadores";
-
-// NOTE: lógica da sequência de cores
-// uint8_t (1 byte), em vez de int (2 ou 4 bytes)
-enum Color : uint8_t {
-    VERDE = 0,
-    VERMELHO = 1,
-    AZUL = 2,
-    AMARELO = 3
-};
 
 // NOTE: fila pra sequência atual de cores (FIFO)
 struct filaCor {
@@ -143,14 +150,14 @@ bool primeiraRodada = true;
 void menu_setup() {
     primeiraRodada = false;
     // TODO: printar o menu, solicitar totalPlayers...
-    // const char promptInicial[] = "Escolha a qtd de jogadores...";
-    // const char opcaoSetup1[] = "1 jogadores";
-    // const char opcaoSetup2[] = "2 jogadores";
-    // const char opcaoSetup3[] = "3 jogadores";
-    // const char opcaoSetup4[] = "4 jogadores";
+    const char promptInicial[] = "Escolha a qtd de jogadores...";
+    const char opcaoSetup1[] = "1 jogadores";
+    const char opcaoSetup2[] = "2 jogadores";
+    const char opcaoSetup3[] = "3 jogadores";
+    const char opcaoSetup4[] = "4 jogadores";
 
     // lógica pra alternar opções no display
-    // lcd.display("")
+    // lcd.print("")
 
     // TODO: receber a qtd e setar totalPlayers
     // totalPlayers = ;
@@ -158,7 +165,7 @@ void menu_setup() {
 
 // TODO: menu pausa (mostrar que está em pausa e deixar opções pra mostrar ranking, score, terminar jogo, resetar...)
 void menu_pausa() {
-    // FIX:
+    // FIX: String -> char*
     String opcao1 = "Voltar ao jogo";
     String opcao2 = "Ver pontuação";
     String opcao3 = "Reiniciar jogo";
@@ -172,6 +179,7 @@ void menu_pausa() {
 // e acender LED como feedback)
 
 // NOTE: strings pro menu
+// FIX: String -> char*
 String vezPlayer1 = "-- Player 1 --";
 String vezPlayer2 = "-- Player 2 --";
 String vezPlayer3 = "-- Player 3 --";
@@ -201,15 +209,18 @@ void pontuarPlayer(uint8_t pontos) {
 // TODO: itera e depois mostra pro P1
 void mostrarSequenciaGlobal() {
     // printar na tela a sequencia
+    // FIX: String -> char*
     String sequenciaString[sequenciaAtualGlobal.qtd * STRING_BUFFER_SIZE];
     for (int i = 0; i < sequenciaAtualGlobal.qtd; i++) {
         // FIX:
         Color corAtual = sequenciaAtualGlobal.sequenciaCor[i];
-        lcd.display();
+        lcd.print();
     }
-    lcd.display("");
+    lcd.print("");
 }
-void receberJogada
+
+// TODO: ??
+// void receberJogada
 
 // NOTE: setup + loop
 // NOTE: em setup, as coisas rodam apenas 1 vez, no início.
@@ -275,8 +286,3 @@ void loop() {
         }
     }
 }
-
-
-// TODO: pensar como será sistema de pontuação
-// TODO: pensar no feedback ao user -> luz, som, ...?
-// TODO: persistência na memória pra guardar highscore
