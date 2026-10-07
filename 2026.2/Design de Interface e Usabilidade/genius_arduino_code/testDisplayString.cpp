@@ -70,6 +70,5 @@ extern "C" void setup() {
 }
 
 extern "C" void loop() {
-    Color corPraMostrar = VERDE;
-    exibirCorLcd(corPraMostrar); // HACK: continua sendo chamado pra sempre
+    exibirCorLcd(VERMELHO);
 }
